@@ -1,0 +1,150 @@
+{
+  "main": {
+    "id": "c7c9362265ecc198",
+    "type": "split",
+    "children": [
+      {
+        "id": "66eead7f96211d4e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7397b3f9421f0105",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "research/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a0ea5ca09e997cbc",
+    "type": "split",
+    "children": [
+      {
+        "id": "ce3a5ea038a5f52c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1072ba99dd2d8ce0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "efeb54427296c225",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0c05b46277eab413",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "e34f08ec77c9c135",
+    "type": "split",
+    "children": [
+      {
+        "id": "f6b27431a4178e4e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4fc57fbc42c94f14",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "research/README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0819a58791c38585",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "research/README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "03341ce6df74d191",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "cac8e9028750e2fc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "research/README.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "1072ba99dd2d8ce0",
+  "lastOpenFiles": [
+    "README.md",
+    "research/README.md",
+    "research/books/2010 - Practical Cryptography Engineering.md",
+    "research/EPF/Weekly Updates/Week 0.md",
+    "mjr.md"
+  ]
+}

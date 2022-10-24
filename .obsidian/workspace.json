@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/books/Cryptography Engineering - 2010.md",
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
                 "mode": "source",
                 "source": false
               }
@@ -167,9 +167,9 @@
   "active": "6c44da2c919df23f",
   "lastOpenFiles": [
     "research/EPF/Reading List.md",
+    "research/Notes/books/Cryptography Engineering - 2010.md",
+    "research/Notes/books/Zero2Prod (in Rust) - 2022.md",
     "research/EPF/Weekly Updates/Week 0.md",
-    "research/books/Zero2Prod (in Rust) - 2022.md",
-    "research/books/Cryptography Engineering - 2010.md",
     "research/README.md",
     "README.md",
     "mjr.md"

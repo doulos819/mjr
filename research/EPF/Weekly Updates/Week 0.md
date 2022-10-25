@@ -7,9 +7,9 @@
 - Hours of availability 8am-5pm EST
 
 #### Goals
-- Better understanding of implementing practical cryptography in systems [[Cryptography Engineering - 2010]]
+- Better understanding of implementing practical cryptography in systems [Cryptography Engineering - 2010](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing)
 	- Start up Crypto Eng Study Group
-- Be able to support a team to implement protocol specs in Rust [[Zero2Prod (in Rust) - 2022]] (or at least how users interact with the protocol) (Wakuv2?)
+- Be able to support a team to implement protocol specs in Rust [[Zero2Prod (in Rust) - 2022]] (Wakuv2?)
 - Some teams I am interested in:
 	- [Status](https://status.im/) - resource constant devices 
 	- [Vacp2p](https://vac.dev/) - private messaging
@@ -29,7 +29,7 @@ ____
 		- Open office hours & study groups
 - Lots of brushing up on Rust/Number Theory
 
-## Week 0 (oct 24-2022)
+## Week 0 (2022.10.24)
 
 ### Monday 
 - Get started using [Obsidian](https://obsidian.md/)
@@ -39,10 +39,10 @@ ____
 - Working through a bit of [[Cryptography Engineering - 2010]]
 	- Reading progress: ch3
 	- Streaming progress: ch2
-- Set up [Reading list](https://hackmd.io/@chloethedev/ryNXAOB4j)
+- Set up [Reading list](https://github.com/doulos819/mjr/blob/main/research/EPF/Reading%20List.md)
   
 ### Tuesday
   - Held [office hours](https://marmaj.org/events/marma-j-research-dao-office-hours/)
-	  - Discussed with HS student who was interested in becoming ETH Researcher and she will join CE study group
+	  - Discussed with HS student who was interested in becoming Ethereum Researcher and she will join CE study group
 
 

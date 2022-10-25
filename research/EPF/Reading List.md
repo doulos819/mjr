@@ -1,4 +1,6 @@
-#### Random (tried to list in order?)
+# EFP Reading List
+
+### Random (tried to list in order?)
 - [Salomon Crypto](https://twitter.com/SalomonCrypto/)
 - [(EIP-4844)](https://ethresear.ch/t/arithmetic-hash-based-alternatives-to-kzg-for-proto-danksharding-eip-4844/)
 - [ingopedia - Extensive list of everything zk](https://github.com/ingonyama-zk/ingopedia)

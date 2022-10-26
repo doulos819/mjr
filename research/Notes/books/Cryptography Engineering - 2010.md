@@ -6,6 +6,8 @@ Author(s): Niels Ferguson, Bruce Schneier, and Tadayoshi Kohono
 Paper(s): 
 - [Link to Text](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing)
 
+Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/books/Crytpo%20Eng%20Exercises.md
+
 ### Table of Contents
 [toc]
 
@@ -185,5 +187,118 @@ Designers need to consider a wider ranger of attackers and attack goals, while a
 - $h(K_a,m)$ doesn't keep a message secret. 
 
 ### 2.3 Public-Key Encryption
+> How do Alice and Bob share $K_e$ (keys)?
+
+- The problem of distributing and managing keys is one of the really difficult parts of cryptography, for which there are only partial solutions.
+- If A and B are in a group of 20 that want to communicate, each member must exchange 19 keys; a total of 190 keys.
+- Always assume that all communications (*$m$) are accessible to an enemy like Eve. 
+- Generic setting for public-key encryption![[Pasted image 20221026134641.png]]
+- To set things up Bob generates a pair of keys $(S_{Bob},P_{Bob})$ using a special algorithm.
+- $D(S_{Bob},E(P_{Bob},m)) = m$ must hold for all possible messages $m$. 
+- Now Bob only has to distribute a single public key that everybody can use. (Alice does the same)
+- In practical systems that use public-key cryptography, one almost always sees a mixture of pub-key & secret-key algorithms.
+- The pub-key algos are used to establish a secret key, which in turn is used to encrypt the actual data; combines flexibility pub-key crypto with the efficiency of symmetric-key crypto. 
+
+### 2.4 Digital Signatures
+> Digital signatures are the public-key equivalent of message authentication codes (MAC for symmetric key)
+
+- Generic setting for digital signature![[Pasted image 20221026141356.png]]
+- This time Alice used a key gen algo to gen a pair $(S_{Alice}, P_{Alice}))$ 
+- When she wants to send $m$ to Bob, she computes a signature $s := \sigma (S_{Alice}, m)$ and sends $m, s$ to Bob
+- Bob uses $v(P_{Alice}, m, s)$ that uses Alice's pub=key to verify the signature. 
+- Anyone can use $P_{Alice}$ to verify that the message came from Alice. 
+
+### 2.5 PKI
+> Public Key Infrastructure: Central Authority (Certificate Authority/CA)
+
+- Each user takes their pub-key to CA to self identify.
+- CA then signs users pub-key using a digital signature; $P_{Bob}$ belongs to Bob.
+- User must know CA pub-key + have the CA verify their pub-key; register once, use everywhere. 
+- VeriSign is probably the best-known CA*(2010)
+	- limited liability $100
+
+### 2.6 Attacks
+> Attacks on encryption schemes; there are many types, each with its own severity.
+
+
+#### 2.6.1 The Ciphertext-Only Model
+> A *ciphertext-only attack* is what most people mean when talking about breaking an encryption system.
+
+- Trying to decrypt $m$ if you only know $c$ is called ciphertext-only attack.
+- Most difficult type of attack because least amount of information. 
+
+#### 2.6.2 The known-Plaintext Model
+> A *known-plaintext attack* is one in which you know both the plaintext and the ciphertext 
+
+- The most obvious goal is to find the decryption key; this will allow attacker to decrypt all other messages between Alive and Bob.
+- More powerful than ciphertext-only attack; attacker gets more information.
+
+#### 2.6.3 The Chosen-Plaintext Model
+> Next level of control is for attacker to choose plaintext.
+
+- Attacker gets to select specially prepared plaintexts; any number of them.
+- There are two variations to this attack:
+	- Offline attack: attacker prepares a list of all plaintexts they want to have encrypted before they get the ciphertexts.
+	- Online attack: attacker can choose new plaintexts based on the ciphertexts they have already received.  
+	- Online version is more powerful of the two.
+
+#### 2.6.4 The Chosen-Ciphertext Model
+> Should really be called: "Chosen ciphertext and plaintext attack"
+
+- Attacker gets to choose both plaintext and ciphertext values. 
+- More powerful because attacker has more freedom.
+- Any reasonable encryption scheme has no trouble surviving a chosen ciphertext attack. 
+
+#### 2.6.5 The Distinguishing Attack Goal
+> There are too many attacks to list, new attacks thought up all the time. We wish to defend against a *distinguishing attack*
+
+- A *distinguishing attack*: any nontrivial method that detects a difference between the ideal encryption scheme and the actual one.*
+- This covers all the areas of attack discussed above, as well as yet-to-be discovered attacks.
+
+#### 2.6.6 Other Types of Attack
+> Attackers can attack other cryptographic functions such as authentication, digital signatures, ect.
+
+- *information leakage* or *side-channel* attacks: Attacks that make used of additional information revealed from when ciphertexts were generated or 
+ how fact encryption/decryption operations were can reveal private information about encrypted messages. 
+
+### 2.7 Under the Hood
+> Looking at two generic attacks
+
+#### 2.7.1 Birthday Attacks
+> *Birthday Attacks are named after the [birthday paradox](https://en.wikipedia.org/wiki/Birthday_problem)*
+
+- An attack that depends on the fact that *collisions* (duplicate values) appear much faster than one would expect.
+- Simple example:
+	- Fresh 64-bit authentication key for ea txn ($2^{64}$ possible key values.) 
+	- After about $2^{32}$ transactions, the attacker can expect a collision (two txns using same key). 
+	- Suppose first authenticated message is always the same, attacker can detect duplicate MAC values.
+	- Attacker could replace new $m'$ with old $m$
+- If an element can take on $N$ (365) values, then first collision should be after about $\sqrt{N}$ (~19) random elements.
+- If you choose $k$ elements, then there are $k(k-1)/2$ pairs of elements.
+	- ea with a $1/N$ chance of being a pair of equal values. 
+	- chance of collision (close to): $k(k-1)/2N$ 
+
+#### 2.7.2 Meet-in-the-Middle Attacks
+> Cousin of birthday attacks; together called collision attacks.
+
+- More common and more useful.
+- Instead of waiting for a key to repeat (birthday attack), attacker can build a table of keys.
+- Simple example:
+	- Fresh 64-bit key to auth ea txn.
+	- Attacker chooses $2^{32}$ different 64-bit keys at random. 
+	- For ea key, attacker computes the MAC for $m$ (first message); stores MAC and key in table.
+	- Attacker then eavesdrops on ea txn and checks for the MAC of $m$.
+	- If MAC appears in the table, high chance the auth key for that txn is the same as the attacked computed; now attacker knows auth key ($K_a$).
+	- Attacker can now insert arbitrary messages into the txn (birthday attack only allowed for inserting old messages.)
+	- Suppose $N$ possible values:
+		- First set has $P$ elements.
+		- Second has $Q$ elements.
+		- There are $PQ$ pairs of elements .
+		- Each pair has a $1/N$ chance of matching.
+		- Collision expected when $PQ/N$ is close to 1 ($P \approx Q \approx \sqrt {N})$ 
+
+### 2.8 Security Level
+> 
+ 
 
  

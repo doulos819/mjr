@@ -48,5 +48,7 @@ ____
 
 ### Wednesday
 - Crypto Eng Stream/Notes
-	- Setup page for exercises; this is a very important part of the learning process. 
+	- Setup page for [exercises](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Crytpo%20Eng%20Exercises.md); this is a very important part of the learning process. 
+	- Continue to work through ch 2
+	- Met with Thor; study group should start in 2 weeks. 
 

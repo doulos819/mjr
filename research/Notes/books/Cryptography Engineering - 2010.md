@@ -6,6 +6,8 @@ Author(s): Niels Ferguson, Bruce Schneier, and Tadayoshi Kohono
 Paper(s): 
 - [Link to Text](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing)
 
+Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/books/Crytpo%20Eng%20Exercises.md
+
 ### Table of Contents
 [toc]
 
@@ -185,5 +187,30 @@ Designers need to consider a wider ranger of attackers and attack goals, while a
 - $h(K_a,m)$ doesn't keep a message secret. 
 
 ### 2.3 Public-Key Encryption
+> How do Alice and Bob share $K_e$ (keys)?
+
+- The problem of distributing and managing keys is one of the really difficult parts of cryptography, for which there are only partial solutions.
+- If A and B are in a group of 20 that want to communicate, each member must exchange 19 keys; a total of 190 keys.
+- Always assume that all communications (*$m$) are accessible to an enemy like Eve. 
+- Generic setting for public-key encryption![[Pasted image 20221026134641.png]]
+- To set things up Bob generates a pair of keys $(S_{Bob},P_{Bob})$ using a special algorithm.
+- $D(S_{Bob},E(P_{Bob},m)) = m$ must hold for all possible messages $m$. 
+- Now Bob only has to distribute a single public key that everybody can use. (Alice does the same)
+- In practical systems that use public-key cryptography, one almost always sees a mixture of pub-key & secret-key algorithms.
+- The pub-key algos are used to establish a secret key, which in turn is used to encrypt the actual data; combines flexibility pub-key crypto with the efficiency of symmetric-key crypto. 
+
+### 2.4 Digital Signatures
+> Digital signatures are the public-key equivalent of message authentication codes (MAC for symmetric key)
+
+- Generic setting for digital signature![[Pasted image 20221026141356.png]]
+- This time Alice used a key gen algo to gen a pair $(S_{Alice}, P_{Alice}))$ 
+- When she wants to send $m$ to Bob, she computes a signature $s := \sigma (S_{Alice}, m)$ and sends $m, s$ to Bob
+- Bob uses $v(P_{Alice}, m, s)$ that uses Alice's pub=key to verify the signature. 
+- Anyone can use $P_{Alice}$ to verify that the message came from Alice. 
+
+### 2.5 PKI
+> 
+
+
 
  

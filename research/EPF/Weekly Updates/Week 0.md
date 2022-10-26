@@ -19,7 +19,7 @@
 - Work with [Thor](https://twitter.com/cryptograthor) as my mentor as I work to implement cryptography widgets in Rust
 	- Uncloak - Build Rust backend to host educational content. 
 	- Cryptography engineering [study group](https://discord.gg/gVAaf8kH) soon™️  
-- Curate [[Reading List]] (https://hackmd.io/@chloethedev/ryNXAOB4j) and have efficient notes on many of the resources.
+- Curate [[Reading List]] (https://github.com/doulos819/mjr/blob/main/research/EPF/Reading%20List.md) and have efficient notes on many of the resources.
 ____
 ### Pre-Fellowship
 - Was spent choosing a mentor (Thor), and starting to go through the reading materials. I also have been gathering resources to support with the "Project" that I hope to work on over the next 4 months (and hopefully beyond). 
@@ -36,13 +36,17 @@ ____
 	- Relatively efficient so far
 	- Useful for having data stored locally
 	- Brushing up on [LaTeX](https://katex.org/docs/supported.html)
-- Working through a bit of [[Cryptography Engineering - 2010]]
+- Working through a bit of [Cryptography Engineering - 2010](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing)
 	- Reading progress: ch3
-	- Streaming progress: ch2
+	- Streaming/[note](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Cryptography%20Engineering%20-%202010.md) progress: ch2
 - Set up [Reading list](https://github.com/doulos819/mjr/blob/main/research/EPF/Reading%20List.md)
   
 ### Tuesday
   - Held [office hours](https://marmaj.org/events/marma-j-research-dao-office-hours/)
 	  - Discussed with HS student who was interested in becoming Ethereum Researcher and she will join CE study group
+- Started Setting up [Zero2Prod Notes](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Zero2Prod%20(in%20Rust)%20-%202022.md)
 
+### Wednesday
+- Crypto Eng Stream/Notes
+	- Setup page for exercises; this is a very important part of the learning process. 
 

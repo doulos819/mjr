@@ -1,8 +1,10 @@
+# Notes on the Text
+
 ###### tags: `cryptography` `uncloak`
 Author(s): Niels Ferguson, Bruce Schneier, and Tadayoshi Kohono
 
 Paper(s): 
-- paper to read?
+- [Link to Text](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing)
 
 ### Table of Contents
 [toc]
@@ -140,6 +142,9 @@ Cryptography is the easy part, because there are people who know how to do a rea
 
 Designers need to consider a wider ranger of attackers and attack goals, while also anticipating and preparing for future uses of the system.
 
+### 1.13 General Exercises
+- [[Crytpo Eng Exercises]]
+
 ## Introduction to Cryptography
 > This chapter introduces basic cryptography concepts and provides background information for the book.
 
@@ -152,5 +157,33 @@ Designers need to consider a wider ranger of attackers and attack goals, while a
 - A encrypts $m$ before sending using and encryption function. 
 	- $E(K_e,m)$ = c
 	- c - *ciphertext* | m - *message* 
-- 
+
+#### 2.1.1 Kerckhoff's Principle
+> the security of the encryption scheme must depend only on the security of the key $K_e$, and not the security of the algorithm.    
+
+- Algos are difficult to change; built into software/hardware, which can be difficult to update. 
+- hard enough to keep a key secret, more difficult & more expensive to keep algo secret. 
+- The authors of this book analysed "quite a number" of secret encryption algos, and *all* of them had weaknesses. 
+- Don't trust security by obscurity
+
+### 2.2 Authentication
+> Eve (malicious) can do more than just listen, they can also change the message in some way $m$ -> $m'$ 
+
+- Fig 2.3 How does Bob know who sent the message![[Pasted image 20221026104853.png]]
+- Like encryption, authentication uses a secret key that Alice and Bob both know - $K_a$ 
+- Fig 2.4 Generic setting for auth![[Pasted image 20221026105945.png]]
+- Alice computes the MAC $a$ as $a:=h(K_a,m)$, where $h$ is the MAC function and $K_a$ is the authentication key.
+	- Alice -> $m,a$ Bob
+	- Bob recomputes $a$ using $K_a$ and checks to see if received $a$ is correct.
+- A good MAC function will not give the same result for $h(K_a,m)$ and $h(K_a,m')$
+- Eve can listen to Alice as she sends messages to record MACs (then Eve has $a$)
+- Authentication is only part of the solution, Eve can still:
+	- Delete messages from Alice -> Bob
+	- Repeat old messages or change message order
+	- Auth usually combined with numbering/nonce
+- $f(K_e,m)$ doesn't stop manipulation of m contents.
+- $h(K_a,m)$ doesn't keep a message secret. 
+
+### 2.3 Public-Key Encryption
+
  

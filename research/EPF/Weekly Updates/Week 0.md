@@ -52,3 +52,16 @@ ____
 	- Continue to work through ch 2
 	- Met with Thor; study group should start in 2 weeks. 
 
+### Thursday
+- Started attending (and caught up) zkp open class:
+	- [ZK Class: Introduction to ZKP](https://www.youtube.com/watch?v=-2qHqfqPeR8&ab_channel=Porter)
+	- [Zero Knowledge Proofs in Practice: Ethereum, Scroll, zkSync, StarkNET, Aztec, Zcash, Mina,Manta,Aleo](https://www.youtube.com/watch?v=ipwxYa-F1uY)
+- Starting to attend EF open calls again. Plan is to attend (and catch up) on recent calls to get situated on ways to potentially support EIP-4844.
+	- [EIP-4844 Implementers' Call #1](https://www.youtube.com/watch?v=hAa1b4m7tsI&ab_channel=EthereumFoundation)
+	- [Ethereum Core Devs Meeting [#148] [2022-10-27]](https://www.youtube.com/watch?v=oQfEW8LdE88&ab_channel=EthereumFoundation)  
+- Starting to play around with Rust based crypto libraries (completing CE text exercises):
+	- https://cryptography.rs/
+	- https://github.com/rustls/rustls
+	- https://github.com/MystenLabs/fastcrypto
+
+

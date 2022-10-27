@@ -35,4 +35,35 @@
 	- $2^{64}$
 
 ### Chapter 3
-1. 
+1. How much space would be required to store a table for an entire idealized block cipher that operates on 64-bit blocks and has 80-bit keys?
+2. How many rounds are in $DES$? How many bits are in a $DES$ key? What is the $DES$ block size? How does $3DES$ work as a function of $DES$?
+3. What are the possible lengths for $AES$ keys? What is the $AES$ block size?
+4. Under what situations might you choose $3DES$ over $AES$?
+5. Suppose you have a processor that can perform a single $DES$ encryption or decryption operation in $2^{-26}$  seconds. Suppose you also have a large number of plaintext-ciphertext pairs for $DES$ under a single unknown key. How many hours would it take, on average, to find that $DES$ key, using an exhaustive search approach and a single processor? How many hours would it take, with a collaction of $2^{14}$ processors?
+6. Consider a new block cipher, *DES2*, that consists only of two rounds of the *DES* block cipher. *DES2* has the same block and key size as *DES*. For this question you should consider the *DES* $F$ function as a black box that takes two inputs, a 32-bit data segment and a 48-bit round key, and that produces a 32-bit output. Suppose you have a large number of plaintext-ciphertext pairs for *DES2* under a single, unknown key. Given an algorithm for recovering the 48-bit round key for round 1 and the 48-bit round key for round 2. Your algorithm should require fewer operations than an exhaustive search for an entire 56-bit *DES* key. Can your algorithm be converted into a distinguishable attack against *DES2*?
+7. Describe an example system that uses *DES* but is insecure because of the *DES* complementation property. Specifically, describe the system, and then present an attack against the system; the attack should utilize the *DES* complementation property. 
+8. Familiarize yourself with a cryptographic software development package for your computer. A popular open source package is [*OpenSSL*](https://docs.rs/openssl/latest/openssl/aes/index.html).
+	- Using an existing cryptographic library, decrypt the following ciphertext (in hex)
+	```rust
+	53 9B 33 3B 39 70 6D 14 90 28 CF E1 D9 D4 A4 07
+```
+with the following 256-bit key (also in hex)
+```rust
+	80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+	00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
+	```
+using *AES*.
+
+9. Using an existing cryptography library, encrypt the following plaintext (in hex)
+
+```rust
+	29 6C 93 FD F4 99 AA EB 41 94 BA BC 2E 63 56 1D
+```
+with the following 256-bit key (also in hex)
+```rust
+	80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+	00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
+```
+using *AES*.
+
+10. Write a program that experimentally demonstrates the complementation property for *DES*. This program should take as input a key $K$ and a plaintext $P$ and demonstrate that the $DES$ complementation property holds for this key and plaintext. You may use an existing cryptography library for this exercise.  

@@ -24,3 +24,8 @@
 ### BUIDL
 - - [Building Nimbus on Android](https://our.status.im/building-nimbus-on-android/)
 	- can't remember author's @ </3
+
+### Rust Crypto Libs
+- https://cryptography.rs/
+- https://github.com/rustls/rustls
+- https://github.com/MystenLabs/fastcrypto

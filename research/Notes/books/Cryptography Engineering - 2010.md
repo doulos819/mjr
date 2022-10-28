@@ -21,17 +21,22 @@ Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/boo
 >Cryptography on world stage (1990s) to secure internet; still no effective way for individuals to leverave. 
 :::
 
-## 1. The Contect of Cryptography 
-> Cryptography is the art and science of encryption, although also covers much broader set of elementary security functions. This book is designed to help cultivate mentality for thinking about security probelms & a scientific backround. 
+## Part 1: Introduction
+In this Part:
+- Chapter 1: The Context of Cryptography
+- Chapter 2: Introduction to Cryptography
+
+## Ch 1. The Context of Cryptography 
+> Cryptography is the art and science of encryption, although also covers much broader set of elementary security functions. This book is designed to help cultivate mentality for thinking about security problems & a scientific background. 
 
 First Lesson: Keep a critical mind; don't blindly trust anything.
 
-### 1.1 The Role of Cryptogtaphy
+### 1.1 The Role of Cryptography
 > Cryptography by itself is fairly useless 
 
 - Needs to be part of a larger system
-- Similar to lock in real world; if rest of system is insecure, rest of system wil get attacked before lock
-- If attack on system, probably noticable; attack on cryptography, probably not noticable (re-entry possible/likely)
+- Similar to lock in real world; if rest of system is insecure, rest of system will get attacked before lock
+- If attack on system, probably noticeable; attack on cryptography, probably not noticeable (re-entry possible/likely)
 
 ### 1.2 The Weakest Link Property
 > A security system is only as strong as its weakest link.
@@ -145,9 +150,9 @@ Cryptography is the easy part, because there are people who know how to do a rea
 Designers need to consider a wider ranger of attackers and attack goals, while also anticipating and preparing for future uses of the system.
 
 ### 1.13 General Exercises
-- [[Crytpo Eng Exercises]]
+- [Crytpo Eng Exercises](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Crytpo%20Eng%20Exercises.md)
 
-## Introduction to Cryptography
+## Ch 2. Introduction to Cryptography
 > This chapter introduces basic cryptography concepts and provides background information for the book.
 
 ### 2.1 Encryption
@@ -298,7 +303,132 @@ Designers need to consider a wider ranger of attackers and attack goals, while a
 		- Collision expected when $PQ/N$ is close to 1 ($P \approx Q \approx \sqrt {N})$ 
 
 ### 2.8 Security Level
+> With enough effort, any practical cryptographic system can be attacked successfully. 
+
+- An easy way to quantify the workload of an attack is to compare it to an exhaustive search. 
+	- *exhaustive search attack*:  an attack that tries all possible values for some target object, like the key (ex. $K_e$)
+	- If an attack requires $2^{235}$ steps of work, then this corresponds to an exhaustive search for a 235-bit value
+- *step*: A step can be executed by a computer in a very short time. 
+	- The ease of using a step-based analysis far outweighs the built-in inaccuracies.
+	- Quick estimate: single step ~ single clock- cycle
+- Any system designed today needs at least 128-bit security level*.
+- When building crypto systems, should aim to build for next 50 years of use. 
+- Crypto primitives are often engineered around powers of two.
+- This concept of security level is only approx. 
+- The level of security is a function of the access of the adversary. 
+
+### 2.9 Performance
+> Security does not come for free. 
+
+- Cryptographers try and make crypo algos as efficient as possible, algos still sometimes perceived too slow. 
+	- Creating custom crypto for efficiency can be risky. 
+	- You have to do an enormous amount of analysis, from experienced cryptographers, to ensure you don't accidentally create a weak system. 
+	- Very expensive.
+- For most systems the performance of the crypto is not an issue since modern *CPUs* are fast enough to handle most data streams. 
+- Even in systems where crypto is a bottleneck, cheaper to but hardware accelerators. 
+
+### 2.10 Complexity
+> The more complex a system is, the more likely it has security problems.
+
+- Part of the problem: "test-and-fix" dev, it only works well for the things it was tested for. 
+	- Might be good enough for functionality, not for security systems.
+	- The system cannot be tested for all possible attacks from clever malicious attacker. 
+	- Attacker wins by finding $\geq$ 1 aspect that wasn't tested. 
+- Only to make a system simple is to modularize it.
+	- This is generally known from software dev, but with crypto systems no bugs afforded. 
+- Correctness must be a local property: one part of the system should behave correctly, regardless of how the rest of the system works. 
+
+### 2.11 Exercises
+- [Chapter 2 Exercises](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Crytpo%20Eng%20Exercises.md#chapter-2)
+
+## Part 2: Message Security
+In this part:
+- Chapter 3: Block Ciphers
+- Chapter 4: Block Cipher Modes
+- Chapter 5: Hash Functions
+- Chapter 6: Message Authentication Codes
+- The Secure Channel
+- Implementation Issues
+
+## Ch 3. Block Ciphers
+> Block ciphers are one of the fundamental building blocks for crypto systems. 
+
+## 3.1 What is a Block Cipher?
+> An encryption function for fixed-size blocks of data. 
+
+- Current generation of block ciphers*:
+	- block size of 128 bits (16 bytes)
+	- encrypt 128-bit plaintext and generate 128-bit ciphertext
+	- block cipher is reversible; there is a decryption function that takes the 128-bit ciphertext -> plaintext.
+	- plaintext and ciphertext are always the same size; block size
+- Like the plaintext and ciphertext, the secret key is also a string of bits. 
+	- Commonly 128 and 256 bits; written as $E(K,p)$ or $E_k(p)$ for the encryption of plaintext $p$ with key $K$ and $D(K,c)$ or $D_k(c)$.
+- Instead of using block cipher directly, one should use a *block cipher mode* (Ch. 4).
+- Don't ever trust a secret block cipher.
+- Can be useful to look at a block cipher like a very large key-dependant table.
+	- For any fixed key, the table would map the plaintext to the ciphertext.
+	- Table would be huge; cipher with 32-bit block size, 16 GB table; 64-bit block size, 150 million TB; 128-bit block size, $5 \cdot 10^{39}$ bytes.
+	- Block cipher is reversible; no two entries are the same; permutation.
+	- Definition: block cipher takes all the $2^k$ possible k-bit inputs and maps each to a unique output. 
+	- Example: if $k = 8$, an input of $00000001$ might encrypt to $01000000$ under a given key, but it might also encrypt to $11011110$ under a different key, depending on the design of the block cipher. 
+	  
+	  ### 3.2 Types of Attack
+	  > All attack types from 2.6 pertain to block ciphers, some are specific to them. Generally, a secure block cipher is one that keeps $p$ secret, but that is only sufficient to mitigate against plaintext-only attackers.
+	  
+	  - Related-key attack (Eli Biham - 1993):
+		  - attacker has access to several encryption functions.
+		  - These functions all have an unknown keys but share a relationship that the attacker knows (key inc by 1).
+	- Chosen-key attack (Authors working on Twofish): attacker specifies some part of the key, then performs related-key attack. 
+	- [Davies-Meyer hash function:](https://en.wikipedia.org/wiki/One-way_compression_function#Davies%E2%80%93Meyer) attacker gets to choose the key of the block cipher, which allows related-key and chosen-key attacks (Ch. 5).
+	- Challenge: Define the properties that one reasonably expects from a block cipher.
+
+### 3.3 The Ideal Block Cipher
+> What the block cipher primitives community believes a block cipher to be.
+
+What would the ideal block cipher look like:
+- It should be a random permutation.
+- As in 3.1:
+	- 128-bit block cipher ~ lookup table of $2^{128}$ elements of 128 bits each.
+	- Ideal block cipher consists of one table for each key value, each table chosen randomly from the set of all possible permutations. 
+	- Not looking at one cipher, but treat the ideal block cipher as a uniform probability distribution over the set of all possible block ciphers. 
+		- Not something that can be obtained in practice; it is an abstract concept that is used when discussing security. 
+
+### 3.4 Definition of Block Cipher Security
+> Definition 1: A secure block cipher is one for which no attack exists.
 > 
- 
+> Definition 2: An attack on a block cipher is a non-generic method of distinguishing the block cipher from an ideal block cipher. 
+> 
+> Definition 3: An ideal block cipher implements an independently chosen random even permutation for each of the key values. 
+
+What does it mean to distinguish a block cipher from an ideal block cipher. 
+- Given a block cipher $X$, we compare it to an ideal block cipher with the same block size and the same key size. 
+- A *distinguisher*: is an algo that is given a black-box function that computes the block cipher $X$ or an ideal block cipher.
+- The distinguisher algo is free to choose any key for each of the encryptions and decryptions it performs. 
+- Task: figure out whether the black-box function implements the block cipher $X$ or the ideal cipher; doesn't have to be perfect, just correct significantly more than incorrect.
+- Choosing the plaintext $0$ and the key $0$ is a distinguisher, but to make it an attack, the distinguisher must be non-generic.
+- A distinguisher is generic if a similar distinguisher can be found for almost any block cipher. 
+- Nobody has been able to formalize a definition of generic attacks and block cipher security. 
+- Must be sure to limit the computational power of the distinguisher.
+	- an exhaustive search of half the key space requires $2^{n-1}$ work and provides the right answer 75% of the time (either attacker finds key, or guesses with 50% probability).
+	- Not classified as an attack since there's a trade off between amount of work and probability. 
+- If a secure block cipher is used, it is no longer necessary to remember any particularities or imperfections; the cipher will have all expected properties; makes the design of larger systems easier.
+
+#### 3.4.1 Parity of a Permutation
+> It turns out there are two types of permutations: those that can be constructed from an even number of swaps, and those that can be constructed from an odd number of swaps; half of all permutations are even, half are odd.
+
+- Most modern block ciphers* have a 128-bit block size, but they operate on 32-bit words. 
+	- Encryption function is built from many 32-bit operations.
+	- It is harder to build an odd permutation from small operations; as a result, almost all block ciphers only generate even permutations. 
+- *Parity attack*: For a given key, extract permutation by encrypting all possible plaintexts.
+	- If odd, we know its an ideal block cipher (most ciphers only produce even permutations).
+	- If even, attacker claims to have the real block cipher and is correct 75% of the time. 
+	- No practical significance to the attack; attacker would have to compute all but one of the plaintext/ciphertext pairs of the encryption function.
+		- Never allow that many plaintext/ciphertext queries to a block cipher in a real system (other types of attacks would hurt much sooner).
+		- Once the attacker knows most of the plaintext/ciphertext pairs, they no longer need a key to decrypt messages, but can simply use a lookup table created form those pairs. 
+	- It more important to exhibit professional paranoia and consider a superset of realistic attacks, and then pare away the unrealistic ones, than to start with only realistic attacks and try to find new ones. 
+
+### 3.5 Real Block Ciphers
+> 
+   
 
  

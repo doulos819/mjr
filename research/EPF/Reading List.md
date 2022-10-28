@@ -7,6 +7,7 @@
 - [General zkp overview](https://zkp.science/)
 - [Applied zkp on Ethereum](https://appliedzkp.org/)
 - [Number Theory](https://explained-from-first-principles.com/number-theory/)
+- [Indiscreetediscreetelog](https://thork.net/)
 
 
 ### Validator Privacy
@@ -16,7 +17,8 @@
 - [CL VP feasibility analysis Dandelion++ and RLN](https://www.notion.so/Ethereum-consensus-layer-validator-privacy-and-feasibility-analysis-using-Dandelion-and-RLN-4674432febdc43979a67f043961442e6)
 - [Wisk Paper](https://ethresear.ch/t/whisk-a-practical-shuffle-based-ssle-protocol-for-ethereum/11763)
 - [Private message sharing for ETH2 validators](https://ethresear.ch/t/private-message-sharing-for-eth2-validators/10664)
-- [Wakuv2](https://rfc.vac.dev/spec/17/)
+- [Waku v2 RLN Relay
+](https://rfc.vac.dev/spec/17/)
 
 ### Light Clients
 - [Proofs of Proof-of-Stake with Sublinear Complexity](https://arxiv.org/abs/2209.08673)
@@ -29,3 +31,8 @@
 - https://cryptography.rs/
 - https://github.com/rustls/rustls
 - https://github.com/MystenLabs/fastcrypto
+
+### zk Chains - to explore
+- [Calimero Network](https://www.calimero.network/)
+- [zkSync](https://t.co/LD9uRe6EDA)
+- [Sui](https://t.co/qtNeeD5z06)

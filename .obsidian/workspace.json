@@ -56,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -124,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/Crytpo Eng Exercises.md",
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/Crytpo Eng Exercises.md",
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/Crytpo Eng Exercises.md"
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md"
               }
             }
           }
@@ -178,12 +178,12 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "c778e6347efc42b6",
+  "active": "6c44da2c919df23f",
   "lastOpenFiles": [
+    "research/Notes/books/Crytpo Eng Exercises.md",
+    "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/EPF/Reading List.md",
     "research/EPF/Weekly Updates/Week 0.md",
-    "research/Notes/books/Cryptography Engineering - 2010.md",
-    "research/Notes/books/Crytpo Eng Exercises.md",
     "research/Notes/books/Zero2Prod (in Rust) - 2022.md",
     "1.12.md",
     "research/README.md",

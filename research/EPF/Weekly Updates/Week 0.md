@@ -64,4 +64,34 @@ ____
 	- https://github.com/rustls/rustls
 	- https://github.com/MystenLabs/fastcrypto
 
+### Friday
+- Streamed ch 2.8 -> 3.5
+	- organized all exercises (ch 1-3)
+	- went through relevant exercises (AES in Rust with https://docs.rs/openssl/latest/openssl/aes/index.html#aes-ige)
+- Project plan seems to be focusing around 3 main flows:
+	1. Complete all core exercises in Rust
+		- Find relevant/up to date Rust libs.
+		- Create guides (written/video) for completing exercises OS on Github.
+	2. Update material & exercises for modern cryptography engineering practices/knowledge.
+		- Go through text and take notes while focusing on key areas that may be outdated.
+		- This will require more knowledge than I current have, but mentor/Fellowship support should be beneficial.
+	3. Cater examples to be practical and based on blockchain implementations. 
+		- Generally providing relevant industry examples from the multitude of real projects building in the zk space.
+		- Most efficient if these examples are community curated
+- At the end of the 4 mo Fellowship, I hope to have this new resource available on the Uncloak site. 
+	- similar to: https://cryptobook.nakov.com/?
+- Going to spend the weekend browsing through the materials on the reading list a bit more ([mats from](https://github.com/ingonyama-zk/ingopedia))
+	- https://www.youtube.com/playlist?list=PLj80z0cJm8QErn3akRcqvxUsyXWC81OGq
+	- https://cryptobook.nakov.com/
+	- https://decentralizedthoughts.github.io/2020-12-22-what-is-a-merkle-tree/
+	- https://www.youtube.com/watch?v=fOGdb1CTu5c&ab_channel=WIRED
+	- https://www.youtube.com/watch?v=iRQw2RpQAVc&ab_channel=LeastAuthority
+	- https://www.youtube.com/channel/UC1usFRN4LCMcfIV7UjHNuQg/videos
+	- https://www.youtube.com/playlist?list=PLJijNYoOwnssZzIIxfochRxo5QRW5Uvfg
+	- https://www.win.tue.nl/~berry/CryptographicProtocols/LectureNotes.pdf
+	- https://crypto.stanford.edu/cs355/22sp/schedule/
+		- https://toc.cryptobook.us/book.pdf
+		- https://crypto.stanford.edu/~dabo/papers/bfibe.pdf
+	- https://www.youtube.com/watch?v=HO97kVMI3SE&ab_channel=a16zcrypto
+
 

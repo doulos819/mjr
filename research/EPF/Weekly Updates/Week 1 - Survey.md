@@ -52,5 +52,8 @@ ____
 	- Started reading through text (pg 8)
 	- Seems like an efficient pairing to CE - 2010. Valuable definitions, proofs, and mathematical exercises. 
 	- More important than general notes would be finding definitions or proofs to help understand larger ideas & understanding the text/proofs.
-- 
+-  [Coursera Crypto](https://www.coursera.org/learn/crypto)
+	- [Corsera Crypto Week1]](https://www.coursera.org/learn/crypto/home/week/1)
 
+### Tuesday
+- Rust & math

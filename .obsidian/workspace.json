@@ -82,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -155,15 +154,15 @@
   },
   "active": "4e74e4961c5bab9b",
   "lastOpenFiles": [
-    "research/EPF/Weekly Updates/Week 0 - Intro.md",
-    "research/EPF/Weekly Updates/Week 1 - Survey.md",
     "research/EPF/Reading List.md",
-    "research/Notes/books/Crytpo Eng Exercises.md",
+    "research/EPF/Weekly Updates/Week 1 - Survey.md",
+    "research/EPF/Weekly Updates/Week 0 - Intro.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
+    "images/Pasted image 20221024115132.png",
+    "research/Notes/books/Crytpo Eng Exercises.md",
     "research/Notes/books/Zero2Prod (in Rust) - 2022.md",
     "1.12.md",
     "research/README.md",
-    "README.md",
-    "mjr.md"
+    "README.md"
   ]
 }

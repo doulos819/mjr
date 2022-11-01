@@ -8,6 +8,7 @@
 - [Applied zkp on Ethereum](https://appliedzkp.org/)
 - [Number Theory](https://explained-from-first-principles.com/number-theory/)
 - [Indiscreetediscreetelog](https://thork.net/)
+- [Delendum zkSnarks](https://kb.delendum.xyz/zk-knowledge#foundations-of-zksnarks)
 
 
 ### Validator Privacy

@@ -22,8 +22,8 @@
 		- [Endgame (Ethereum)](https://vitalik.ca/general/2021/12/06/endgame.html)
 		- [Some ways to use ZK-SNARKs for privacy](https://vitalik.ca/general/2022/06/15/using_snarks.html)
 		- [The different types of ZK-EVMs](https://vitalik.ca/general/2022/08/04/zkevm.html)
-	- [QAP/ R1CS](https://medium.com/@VitalikButerin/quadratic-arithmetic-programs-from-zero-to-hero-f6d558cea649)
-2. Video: Free Video Resources for basic background knowledge.
+		- [QAP/ R1CS](https://medium.com/@VitalikButerin/quadratic-arithmetic-programs-from-zero-to-hero-f6d558cea649)
+1. Video: Free Video Resources for basic background knowledge.
 	- [MIT OCW CS](https://youtu.be/8mAITcNt710)
 	- [Rust w Boggy](https://www.youtube.com/playlist?list=PLai5B987bZ9CoVR-QEIN9foz4QCJ0H2Y8)
 	- [Algebra](https://youtu.be/LwCRRUa8yTU)
@@ -32,7 +32,7 @@
 		2. [Albert R. Meyer - MIT OCW](https://www.youtube.com/playlist?list=PLUl4u3cNGP60UlabZBeeqOuoLuj_KNphQ)
 	- [Number Theory](https://youtu.be/19SW3P_PRHQ)
 	- [Pairings in Cryptography](https://youtu.be/8WDOpzxpnTE)
-3. **Audio:** Free Audio Resources for basic background knowledge.
+2. **Audio:** Free Audio Resources for basic background knowledge.
 	- [ZKfm](https://zeroknowledge.fm/zero-knowledge-series/)
 
 **Example:** Learn ZK 
@@ -42,10 +42,11 @@
    
 ____
 ### Monday
+
 - [Crypto Engineering - 2010](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Cryptography%20Engineering%20-%202010.md)
 	- Finish ch 3 this week & start doing exercises.
 - [ZK Whiteboard Sessions](https://www.youtube.com/playlist?list=PLj80z0cJm8QErn3akRcqvxUsyXWC81OGq)
-	- Vid 1 (weekend), 2, & 3.
+	- Module 1 & 2.
 - [ZKPorter](https://www.youtube.com/playlist?list=PLvvyxOd1rILcb4S3KkQn_V3Kx4iVI6Yw-)
 	- [Class 3 - Tornado Cash Whitepaper](https://www.youtube.com/watch?v=jGmvJZ7m7WU&ab_channel=Porter)
 - [A Graduate Course in Applied Cryptography](https://toc.cryptobook.us/book.pdf)
@@ -53,7 +54,34 @@ ____
 	- Seems like an efficient pairing to CE - 2010. Valuable definitions, proofs, and mathematical exercises. 
 	- More important than general notes would be finding definitions or proofs to help understand larger ideas & understanding the text/proofs.
 -  [Coursera Crypto](https://www.coursera.org/learn/crypto)
-	- [Corsera Crypto Week1]](https://www.coursera.org/learn/crypto/home/week/1)
+	- [Corsera Crypto Week 1](https://www.coursera.org/learn/crypto/home/week/1)
+	- Started the course to see what type of resources are available, have gone through a few videos.
 
 ### Tuesday
-- Rust & math
+
+- Started the day with [Pairings in Cryptography](https://youtu.be/8WDOpzxpnTE) (dnf)
+- Uncloak Team meeting - Study group starting next week hopefully. Also to start setting up beginnings of basic knowledge graph.
+- [Corsera Crypto Week 1](https://www.coursera.org/learn/crypto/home/week/1)
+	- Almost complete week 1 - looking forward to seeing how the python programming exercises are -> Rust. 
+
+### Wednesday
+
+- [Pairings in Cryptography](https://youtu.be/8WDOpzxpnTE)
+- [Corsera Crypto Week 1](https://www.coursera.org/learn/crypto/home/week/1)
+	- Finish W1 (complete quiz and start programming assignment - Python)
+- [ZK Whiteboard Sessions](https://www.youtube.com/playlist?list=PLj80z0cJm8QErn3akRcqvxUsyXWC81OGq)
+	- [Module Three: Building a SNARK, pt 2 by Dan Boneh](https://www.youtube.com/watch?v=vxyoPM2m7Yg&ab_channel=ZeroKnowledge)
+- [QAP/ R1CS](https://medium.com/@VitalikButerin/quadratic-arithmetic-programs-from-zero-to-hero-f6d558cea649)
+	- stream?
+
+### Thursday
+- [Euler in Rust](https://www.youtube.com/watch?v=12yU-onACsY&list=PLcFQxbPQBUEUNIsPQjHeULQnp3L3F_QwR&ab_channel=MarcusKazmierczak)
+	- Start Repo
+- Meet with Thor
+- [ZKPorter](https://www.youtube.com/playlist?list=PLvvyxOd1rILcb4S3KkQn_V3Kx4iVI6Yw-)
+	- Class 4
+
+### Friday
+
+- [Crypto Engineering - 2010](https://github.com/doulos819/mjr/blob/main/research/Notes/books/Cryptography%20Engineering%20-%202010.md)
+	- Stream completion of ch 3 notes and decide to continue or switch to  Corsera course. 

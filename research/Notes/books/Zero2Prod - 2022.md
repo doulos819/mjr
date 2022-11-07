@@ -1,3 +1,5 @@
+# Zero2Prod (in Rust) - 2022
+
 ##### An Opinionated Introduction to backend Development (Luca Palmieri)
 
 ### Preface

@@ -1,4 +1,4 @@
-### Survey of Current Resources
+### Survey of Current Resources: 10-31-22
 > Last week: Decided on general EPF project theme. Educational resources to support the learning pathway of perspective cryptography engineers. 
 > This week: Survey of current applied cryptography/zk resources to aid in applying cryptography.
 

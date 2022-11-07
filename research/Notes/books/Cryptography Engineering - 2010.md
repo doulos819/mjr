@@ -428,7 +428,117 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
 	- It more important to exhibit professional paranoia and consider a superset of realistic attacks, and then pare away the unrealistic ones, than to start with only realistic attacks and try to find new ones. 
 
 ### 3.5 Real Block Ciphers
-> 
-   
+> It is very difficult to create a block cipher what is efficient in a wide variety of different applications.
+
+- The cryptographic community doesn't trust a cipher until it has been reviewed thoroughly by other experts.
+- There are so many ciphers out there that few get any effective peer review. 
+- Virtually all block ciphers consist of several repetitions of a weak block cipher, known as a *round*. 
+	- Several of these weak rounds in sequence make a strong block cipher. 
+- Most attacks on block ciphers begin by attacking versions with a reduced number of rounds. 
+
+#### 3.5.1 DES
+> Data Encryption Standard: restricted key size of 56 bits & small block size of 64 bits make it unsuitable for today;s fast computers and large amounts of data.
+
+- Survives in the form of 3DES, which is a block cipher build from three DES in sequence.*
+	- encrypt with DES with one 56-bit key, decrypt with a second 56-bit key, and then encrypt again either with the first key or a third 56-bit key.
+	- Solved immediate problem of small key size, no known fix for small block size.
+- Neither DES of 3DES should be used in today's system, but classical design worth studying. 
+- ![](Pasted%20image%2020221104105947.png)
+- DES has a 64-bit plaintext; two 32-bit halves $L$ and $R$.
+- DES has 16 rounds $R_{1...16}$ ; each round $i$ uses a separate 48-bit round key $K_i$.
+	- Each round key is formed by selecting 48 bits from the 56-bit key; each round has a different selection method.
+	- The algo that derives $Ki$ from the main block cipher key is called the key schedule.
+- Expand: produce 48 bits of output from the 32-bit input. 
+- 48-bit output is $\oplus$ with 48-bit $K_i$.
+- Result is used in the S-box tables.
+	- S-bot(*substitution box*): lookup table that is publicly known. 
+	- Consist of either small lookup tables, each maps 6 bits to 4 bits; brings result back to 32 bits. 
+	- Provide nonliterary, without them, the cipher could be written as a bunch of binary additions. Easy mathematical attack.
+- This basic (repeated) structure is called the [Feistel construction](https://en.wikipedia.org/wiki/Feistel_cipher)
+- Elegant block cipher, decryption requires exactly the same set of operations as encryption. 
+	- Most leave out swap after last round so hardware implementations can use same circuit to compute both encryptions and decryptions. 
+- The combination of the S-box, expand, and bit shuffle functions provide diffusion; ensure that if one bit is changed in the input of $F$, more than one bit is changed in the output.
+	- more bit changes after each round.
+- DES has a number of properties that disqualify it according to security definition. #edit 
+	- Distinguishing attack #edit when cipher key is 0 since all round keys would also be 0; ideal block cipher doesn't have such an identifying property. 
+	- DES also has a complementation property that ensures that:
+		- $E(\overline{K},\overline{P}) = \overline{E(K,P)}$ 
+		- $\forall$ keys $K$, and plaintext $P$, where $\overline{X}$ is the value obtained by complimenting all the bots in $X$. 
+
+#### 3.5.2 AES
+> Advanced Encryption Standard; U.S gov standard created to replace DES.
+
+- Became a standard in 2001; not a Feistel cipher. 
+- ![](Pasted%20image%2020221104114542.png)
+- The plaintext $P$ comes in as 16 bytes (128 bits) at the top.
+- 1st operation is to $P \oplus K_i$ (16 byte round key).
+- Each of the 16 bytes output is used in index into an S-box table that maps 8-bit inputs to 8-bit outputs. (S-boxes are all identical)
+	- bytes are then rearranged.
+- Bytes are mixed into groups of four using a linear function.
+- A full encryption consists of 10-14 rounds, depending on key size. 
+	- AES is defined for 128, 192, and 256-bit keys (10, 12, 14 rounds).
+- Each step consists of a number of operations that can be performed in parallel. 
+	- On the other hand, decryption is different from encryption; need inverse lookup tabled of the S-box, and inverse mixing operation is different.
+- Attack at 6 rounds so designers chose 10-14; attacks have improved.
+- More recent attack results show that AES does not meet strict definition of security for a block cipher either. (attacks on 192-bit and 256-bit are theoretical)
+- AES still used, build for the ability to replace block cipher if needed. 
+
+#### 3.5.3 Serpent
+> Another AES finalist, built like a tank, designed for security all the way.
+
+- Best known attack covers 12/32 rounds, but 1/3 the speed of AES.
+- 32 Rounds, each round: 
+	- 128-bot $K_i \oplus P$
+	- Apply linear mixing function to the 128 bits.
+	- Apply 32 four-bit S-boxes in parallel.
+		- Each round uses eight different S-boxes in turn (same each round).
+		- Total of 1024 S-box lookups which is slow, trick is to rewrite the S-boxes as Boolean formula. 
+		-  Each of the four output bits is written as a Boolean formula of the four input bits. (CPU evaluate using AND, OR, and XOR)
+		- 32-bit CPU can evaluate 32 S-box lookups in parallel; called bitslice implementation.
+
+#### 3.5.4 Twofish
+> Can be seen an a compromise between AES and Serpent. Nearly as fast as AES, but larger security margin.
+
+- Best known attack is on 8/16 rounds #edit 
+- Biggest disadvantage is that it can be expensive to change the encryption key because there is a lot of precomputation on the keys in Twofish. 
+- Uses same Feistel structure as DES.
+- ![](Pasted%20image%2020221107160231.png)
+- Splits the 128-bit plaintext into four 32-bit values ($k_{0..3}$).
+- Feistel structure can be seen with $F$ being the round function. 
+	- Round consists of two copies of the $g$ function.
+		- Each consists of four S-boxes followed by a linear mixing function (similar to AES mixing).
+		- These S-boxes are not constant, but contents depend on the key. (harder for attacker to analyze)
+	- A function called the PHT.
+		- Mixes the two results of the $g$ functions 
+	- And a Key addition.
+		- The last part of the $F$ function.
+- The result of the $F$ function is xored into the right half,
+- The boxes with ≪ or ≫ symbols in them denote rotations of the 32-bit value by the speciﬁed number of bit positions.
+
+#### 3.5.5 Other AES Finalists 
+> 3/5 already discussed. RC6 and MARS as well.
+
+### 3.5.6 Which Block Cipher Should I choose?
+> Recent attacks make AES tough choice, still recommend AES, it is fast; attacks are theoretical, not practical.
+
+- Relatively easy to use and implement.
+- You could always double encrypt (first with AES, then Serpent or Twofish)
+	- If this is done, remember to use different independent keys for each block cipher.
+- AES could also be used with an increased number of rounds (28 rounds for 256-bit keys).
+- No known attacks against the mathematics of AES, but it is possible to implement poorly.
+	- Can be implemented so that the time it takes to perform an operation is dependant on inputs. 
+	- If an attacker can measure this time, they might be able to learn bits of the key. 
+	- Use constant time implementation or somehow otherwise conceal the timing information. 
+
+#### 3.5.7 What Key Size Should I Use?
+> For almost all applications, 128-bit security is enough; to achieve 128-bits of security, use a key longer than 128 bits. 
+
+- For a security level of $n$ bits, every cryptographic value should be at least $2n$ bits long. (128-bit security, use block cipher with a 256 bit block size).
+- Larger key provides a better safety margin, assuming that the block cipher is secure. 
+- AES with 192 and 256-bit keys are not secure; attacks exploit weaknesses in the key schedule algo.
+- No known attacks against AES with 128-bit keys #edit.
+
+## Ch 4. Block Cipher Modes
+>
 
  

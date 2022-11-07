@@ -37,14 +37,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/EPF/Weekly Updates/Week 1 - Survey.md",
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "04915079ae8a5c66",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -110,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/EPF/Weekly Updates/Week 1 - Survey.md",
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/EPF/Weekly Updates/Week 1 - Survey.md",
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/EPF/Weekly Updates/Week 1 - Survey.md"
+                "file": "research/Notes/books/Cryptography Engineering - 2010.md"
               }
             }
           }
@@ -161,17 +173,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "8ea346a3811b3e1b",
+  "active": "04915079ae8a5c66",
   "lastOpenFiles": [
-    "research/EPF/Weekly Updates/Week 0 - Intro.md",
     "research/EPF/Weekly Updates/Week 1 - Survey.md",
+    "research/EPF/Weekly Updates/Week 0 - Intro.md",
+    "research/EPF/Weekly Updates/Week 2.md",
     "research/EPF/Reading List.md",
-    "research/EPF/Project.md",
+    "research/EPF/Project - Uncloak.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
-    "images/Pasted image 20221024115132.png",
+    "research/Notes/books/Zero2Prod - 2022.md",
+    "images/Pasted image 20221104105947.png",
     "research/Notes/books/Crytpo Eng Exercises.md",
-    "research/Notes/books/Zero2Prod (in Rust) - 2022.md",
-    "1.12.md",
-    "research/README.md"
+    "images/Pasted image 20221024115132.png"
   ]
 }

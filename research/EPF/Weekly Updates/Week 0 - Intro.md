@@ -1,4 +1,4 @@
-### Project Setup & Learning
+### Project Setup & Learning: 24-10-22
 
 #### Intro
 - My name is [Chloe](https//:marmaj.org/chloe), and I am very excited to be taking part in the Ethereum Protocol Fellowship over the next 4 months ([specifically cohort 3](https://github.com/eth-protocol-fellows/cohort-three/blob/master/program-guide/program-details.md)).
@@ -9,7 +9,7 @@
 #### Goals
 - Better understanding of implementing practical cryptography in systems [Cryptography Engineering - 2010](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing)
 	- Start up Crypto Eng Study Group
-- Be able to support a team to implement protocol specs in Rust [[Zero2Prod (in Rust) - 2022]] (Wakuv2?)
+- Be able to support a team to implement protocol specs in Rust [[Zero2Prod - 2022]] (Wakuv2?)
 - Some teams I am interested in:
 	- [Status](https://status.im/) - resource constant devices 
 	- [Vacp2p](https://vac.dev/) - private messaging

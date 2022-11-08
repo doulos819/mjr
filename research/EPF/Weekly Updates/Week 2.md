@@ -20,10 +20,19 @@ ____
 
 ### Tuesday
 -  [QAP/ R1CS](https://medium.com/@VitalikButerin/quadratic-arithmetic-programs-from-zero-to-hero-f6d558cea649)
-- Rust for gaming (https://www.youtube.com/watch?v=oHYs-UqS458&ab_channel=CodingTech)
+	- Completed [notes on R1CS](https://github.com/doulos819/mjr/blob/main/research/Notes/books/articles/QAP-VB.md) (still to do QAP)
+- Started [Uncloak-c repo](https://github.com/doulos819/uncloak-c) to push my notes to.
+	- Specifically [CE text](https://github.com/doulos819/uncloak-c/blob/main/cryptography%20engineering/Object-Cryptograpgy%20Engineering.md)
 
 ### Wednesday
-- Corsera
+- [Coursera Crypto](https://www.coursera.org/learn/crypto)
+	- Spend the day going through lectures and checking for understanding. 
 
 ### Thursday
-- Rust gaming 2d text
+- [a-half-hour-to-learn-rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust "https://fasterthanli.me/articles/a-half-hour-to-learn-rust")
+- [frustrated-its-not-you-its-rust](https://fasterthanli.me/articles/frustrated-its-not-you-its-rust "https://fasterthanli.me/articles/frustrated-its-not-you-its-rust") 
+- [aiming-for-correctness-with-types](https://fasterthanli.me/articles/aiming-for-correctness-with-types "https://fasterthanli.me/articles/aiming-for-correctness-with-types") 
+- The rustlings course has some exercises you might try: [whats-in-the-box](https://fasterthanli.me/articles/whats-in-the-box "https://fasterthanli.me/articles/whats-in-the-box")
+- Two useful cheatsheets: 
+	1. [https://cheats.rs/](https://cheats.rs/ "https://cheats.rs/")
+	2. [itercheat_baked.html](https://danielkeep.github.io/itercheat_baked.html "https://danielkeep.github.io/itercheat_baked.html") 

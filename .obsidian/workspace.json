@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md",
+                "file": "research/EPF/Weekly Updates/Week 2.md",
                 "mode": "source",
                 "source": false
               }
@@ -82,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md",
+                "file": "research/EPF/Weekly Updates/Week 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md",
+                "file": "research/EPF/Weekly Updates/Week 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md"
+                "file": "research/EPF/Weekly Updates/Week 2.md"
               }
             }
           }
@@ -152,15 +151,15 @@
   },
   "active": "964ee0aa1b650a38",
   "lastOpenFiles": [
-    "research/EPF/Weekly Updates/Week 2.md",
-    "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/EPF/Weekly Updates/Week 1 - Survey.md",
+    "research/EPF/Weekly Updates/Week 2.md",
+    "research/Notes/books/articles/QAP-VB.md",
+    "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/EPF/Weekly Updates/Week 0 - Intro.md",
     "research/EPF/Reading List.md",
     "research/EPF/Project - Uncloak.md",
     "research/Notes/books/Zero2Prod - 2022.md",
     "images/Pasted image 20221104105947.png",
-    "research/Notes/books/Crytpo Eng Exercises.md",
-    "images/Pasted image 20221024115132.png"
+    "research/Notes/books/Crytpo Eng Exercises.md"
   ]
 }

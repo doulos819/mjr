@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md",
+                "file": "research/EPF/Project-Uncloak.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md",
+                "file": "research/EPF/Project-Uncloak.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md",
+                "file": "research/EPF/Project-Uncloak.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/articles/QAP-VB.md"
+                "file": "research/EPF/Project-Uncloak.md"
               }
             }
           }
@@ -150,9 +150,9 @@
   },
   "active": "04915079ae8a5c66",
   "lastOpenFiles": [
-    "Pasted image 20221108104618.png.md",
-    "research/Notes/books/articles/QAP-VB.md",
     "research/EPF/Weekly Updates/Week 2.md",
+    "research/Notes/books/articles/QAP-VB.md",
+    "Pasted image 20221108104618.png.md",
     "research/EPF/Weekly Updates/Week 1 - Survey.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/Notes/books/Crytpo Eng Exercises.md",

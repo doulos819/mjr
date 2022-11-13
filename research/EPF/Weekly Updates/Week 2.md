@@ -39,3 +39,5 @@ ____
 
 ### Thoughts 
 - Going to be changing up the format of my weekly updates going forward since I am finally starting to galvanise around a project idea. 
+  
+  There is already: https://github.com/doulos819/mjr/blob/main/research/EPF/Project%20-%20Uncloak.md

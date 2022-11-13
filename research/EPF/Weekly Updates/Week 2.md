@@ -39,5 +39,7 @@ ____
 
 ### Thoughts 
 - Going to be changing up the format of my weekly updates going forward since I am finally starting to galvanise around a project idea. 
-  
-  There is already: https://github.com/doulos819/mjr/blob/main/research/EPF/Project%20-%20Uncloak.md
+- There is already a GitHub link for the [project outline](https://github.com/doulos819/mjr/blob/main/research/EPF/Project-Uncloak.md)
+	- outline should follow [this format.](https://github.com/eth-protocol-fellows/cohort-three/blob/master/projects/project-template.md)
+- Starting next week, weekly updates will consist of trying to simply compile my github links along with remarks about the study group.
+

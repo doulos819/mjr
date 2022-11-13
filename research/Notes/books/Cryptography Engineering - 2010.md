@@ -9,17 +9,22 @@ Paper(s):
 Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/books/Crytpo%20Eng%20Exercises.md
 
 ### Table of Contents
-[toc]
+[[Object-Cryptograpgy Engineering#Part 1: Introduction |Part 1: Intro]]
+- [[Object-Cryptograpgy Engineering#Ch 1. The Context of Cryptography |Ch 1 - Context of Crypto]]
+- [[Object-Cryptograpgy Engineering#Ch 2. Introduction to Cryptography |Ch 2 - intro to Crypto]]
+[[Object-Cryptograpgy Engineering#Part 2: Message Security |Part 2: Message Security]]
+- [Ch 3. Block Ciphers](Cryptography%20Engineering%20-%202010#Ch%203.%20Block%20Ciphers)
+- Ch 4
 
-:::info
->Abstract: Most books cover what cryptography is, but this book provides invaluable resources for anyone working with cryptography. Cryptography and security engineers need to know more than just how protocols work; they need to know how to USE CRYPTOGRAPHY! 
+>[!Abstract]
+>Most books cover what cryptography is, but this book provides invaluable resources for anyone working with cryptography. Cryptography and security engineers need to know more than just how protocols work; they need to know how to USE CRYPTOGRAPHY! 
 >
->To know how to use crytography, one must learn how to think like a crytographer. 
+>To know how to use cryptography, one must learn how to think like a cryptographer. 
 >
 >Both computer security and cryptography are about designing and evaluating objects (systems or algorithms) intended to behave in certain ways even in the presence of an adversary. 
 >
->Cryptography on world stage (1990s) to secure internet; still no effective way for individuals to leverave. 
-:::
+>Cryptography on world stage (1990s) to secure internet; still no effective way for individuals to leverage. 
+
 
 ## Part 1: Introduction
 In this Part:
@@ -96,14 +101,14 @@ First Lesson: Keep a critical mind; don't blindly trust anything.
 - For any real system you should never forget the threat analysis for each of the participants. 
 
 ### 1.6 Cryptography Is Not The Solution
-> It might be part of the solution, or it might be par tof the problem. 
+> It might be part of the solution, or it might be part of the problem. 
 
-Cryptography can also make systems weaker when use din inapproriate ways. In many situations, it provides only a feeling of security, but no actual security.
+Cryptography can also make systems weaker when use din inappropriate ways. In many situations, it provides only a feeling of security, but no actual security.
 
-### 1.7 Crytography Is Very Difficult
+### 1.7 Cryptography Is Very Difficult
 > The weakest-link property and the adversarial setting conspire to make life for a cryptographer-or any security engineer-very hard.
 
-There are some small areas of cryptography that are generally well understood, but that doesnt mean they are simple. These areas have just been worked on for a few decades and general consensus is that critical issues are known.
+There are some small areas of cryptography that are generally well understood, but that doesn't mean they are simple. These areas have just been worked on for a few decades and general consensus is that critical issues are known.
 
 ### 1.8 Cryptography Is The Easy Part
 > Like a lock, a cryptographic component has fairly well-defined boundaries and requirements. 
@@ -115,33 +120,33 @@ Cryptography is the easy part, because there are people who know how to do a rea
 ### 1.9 Generic Attacks
 > Some security problems can't be solved. 
 
-- It is important to identidy what the generic attacks against a system are
+- It is important to identify what the generic attacks against a system are
 - generic attack from outside the system cannot be protected against (by any technology).
 
 ### 1.10 Security And Other Design Criteria
-> Security is neevr the only design criterion for a system. Instead security is but one of many criteria.
+> Security is never the only design criterion for a system. Instead security is but one of many criteria.
 
 #### 1.10.1 Security Versus 
 > Good engineering lasts the tests of time.
 
 - The priorities of computer industry largely value speed > security
-- The result is generally a system that is somewhat efficient, yet is not sufficienly secure.
+- The result is generally a system that is somewhat efficient, yet is not sufficiently secure.
 - "If it fails, fall back off and become more conservative"
-- Lack of compiter security is a hinderance to most users.
-- Digital crooks of the future will have more resources and the probelm will be larger
-- "Good security is always a mixture of prevention. detction, and response"[114] 
+- Lack of computer security is a hindrance to most users.
+- Digital crooks of the future will have more resources and the problem will be larger
+- "Good security is always a mixture of prevention, detection, and response"[114] 
 - We are willing to spend up to 90% of CPU on security, but costs of security can many times be hidden from user.
-- Most of the time. the overhead increase from an efficient security system shouldnt be noticable on a human time scale; even when it's significant, that's just the cost of doing business.
-- Security 1st, 2nd, 3rd, performance somwhere down the list. 
+- Most of the time. the overhead increase from an efficient security system shouldn't be noticeable on a human time scale; even when it's significant, that's just the cost of doing business.
+- Security 1st, 2nd, 3rd, performance somewhere down the list. 
 - Often realities of market > need for security. 
 
 #### 1.10.2 Security Versus Features
 > Complexity is the worst enemy of security.
 
-- A computer program with 20 different bianary options (on/off) has more than a million configurations.
+- A computer program with 20 different binary options (on/off) has more than a million configurations.
     - To get the program to work: test most common configurations.
     - To make program secure: must evaluate each of the million possible configurations.
-- To make a large, simple system you have to create a clear and simple interafce between different parts of the system.
+- To make a large, simple system you have to create a clear and simple interface between different parts of the system.
     - Complexity is a measure of how many things interact at any one point.
 
 #### 1.10.3 Security Versus Evolving Systems

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "file": "research/Notes/books/articles/QAP-VB.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "file": "research/Notes/books/articles/QAP-VB.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "file": "research/Notes/books/articles/QAP-VB.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md"
+                "file": "research/Notes/books/articles/QAP-VB.md"
               }
             }
           }
@@ -150,15 +150,15 @@
   },
   "active": "04915079ae8a5c66",
   "lastOpenFiles": [
+    "Pasted image 20221108104618.png.md",
+    "research/Notes/books/articles/QAP-VB.md",
+    "research/EPF/Weekly Updates/Week 2.md",
+    "research/EPF/Weekly Updates/Week 1 - Survey.md",
+    "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/Notes/books/Crytpo Eng Exercises.md",
     "images/Pasted image 20221024115132.png",
     "images/Pasted image 20221026104853.png",
     "images/Pasted image 20221104105947.png",
-    "images/Pasted image 20221026134641.png",
-    "images/Pasted image 20221026141356.png",
-    "images/Pasted image 20221026105945.png",
-    "research/Notes/books/Cryptography Engineering - 2010.md",
-    "research/EPF/Project - Uncloak.md",
-    "research/EPF/Weekly Updates/Week 2.md"
+    "images/Pasted image 20221026134641.png"
   ]
 }

@@ -19,6 +19,10 @@ Tu-Th
 - Pm
 	- [Reading list](https://github.com/doulos819/mjr/blob/main/research/EPF/Reading%20List.md)
 	- There are sooooo many papers and resources to keep up with and try and take notes on, but never enough time. [example](https://github.com/doulos819/mjr/blob/main/research/Notes/books/articles/QAP-VB.md) 
+	  
+#### Crypto Engineering Study Group - Friday's @ 17:45 UCT
+> Course Syllabus: https://hackmd.io/@thor314/ryEWRY6Qs
+- Playlist will be available with sessions recordings.
 ____
 ### Week highlights
 

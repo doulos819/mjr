@@ -18,31 +18,41 @@ Facilitating the aggregation, connection, and transfer of technical knowledge is
 
 A 4-month, open to the public, Rust Cryptography Engineering weekly study group, covering topics in [_Cryptography Engineering: Design Principles and Practical Applications_](https://drive.google.com/drive/folders/1506sz7G5o6ATeGObP1AEwMV4msaLK3HD?usp=sharing), and other materials as necessary. The group will have optional weekly programming assignments for practice. We will meet in the [Uncloak Discord](https://discord.gg/TYwr4pMS2h).
 
-Learn cryptography with a community of enthusiasts and practitioners. Experience with Rust will be helpful but not required. See the [Uncloak Discord Rust Channel](https://discord.gg/TYwr4pMS2h) for some recommended starting resources on Rust.  
-Shared notes for the study group will live in this [HackMD](https://hackmd.io/@thor314/rJYOqK6Qo), and the [Uncloak Graph](https://uncloak.org/).
+Learn cryptography with a community of enthusiasts and practitioners. Experience with Rust will be helpful but not required. See the [Uncloak Discord Rust Channel](https://discord.gg/TYwr4pMS2h) for some recommended starting resources on Rust.  Shared notes for the study group will live in this [HackMD](https://hackmd.io/@thor314/rJYOqK6Qo), and the [Uncloak Graph](https://uncloak.org/).
 
 [Practical Cryptography for Developers](https://cryptobook.nakov.com/) and [Number Theory Explained From First Principles](https://explained-from-first-principles.com/number-theory/) are recommended as supplemental resources.
 
 ## Specification
 How will you implement your solutions? Give details and more technical information on the project.
 
-Syllabus specific: https://hackmd.io/@thor314/ryEWRY6Qs#Syllabus
-Contributor specific: todo()!
+Syllabus: https://hackmd.io/@thor314/ryEWRY6Qs#Syllabus
+Repo for class exercises: https://github.com/doulos819/uncloak-cesg
+
+For the study group:
+- Class details are posted to HackMD (for example, [here is the syllabus](https://hackmd.io/@thor314/ryEWRY6Qs#Syllabus))
+- Community participation or organization is in the [Uncloak discord](https://discord.gg/b8J9ERVZ5z).
+- Knowledge graph is starting with an [Obsidian site](https://uncloak.org/).
+
 
 ## Roadmap
 
 - In 4 months we will have the first iteration of the course complete and can assess how to improve to a potential next iteration. 
-- Knowledge graph should have basic additions for [cryptography topic](https://uncloak.org/Topic-Cryptography. 
+- Knowledge graph should have basic additions for [cryptography topic](https://uncloak.org/Topic-Cryptography).
 
 ## Possible challenges
 
-- Hundreds of interested individuals, how to accommodate
-- balance between building & educating/supporting
+- Hundreds of interested individuals, how to accommodate efficiently facilitating their needs.
+- Trying to balance between building & educating/supporting.
+- Managing mischievous actors in the public learning space.
+- Attempting to efficiently organize community knowledge graph contributions. 
 
 ## Goal of the project
 
-- MOOC / Course that can expand to continue to support more individuals
+- MOOC / Course that can expand to continue to support more individuals. 
 - Knowledge graph expanding to more technical topics (blockchain specific or potentially outside of cryptography entirely).
+- Would like to be able to lead the class the next time it runs.
+- Train Rust cryptography engineers to support be able to educate themselves with a community to support the learning journey. 
+- Build an open source knowledge graph for technical topics. 
 
 ## Collaborators
 

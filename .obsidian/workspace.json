@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "04915079ae8a5c66",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "research/EPF/Weekly Updates/Week 2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "6bc80f853a2b5618",
             "type": "leaf",
             "state": {
@@ -44,7 +32,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -163,12 +152,12 @@
   },
   "active": "964ee0aa1b650a38",
   "lastOpenFiles": [
-    "research/EPF/Reading List.md",
-    "research/EPF/Project-Uncloak.md",
+    "research/Notes/books/Crytpo Eng Exercises.md",
     "research/EPF/Weekly Updates/Week-3.md",
+    "research/EPF/Project-Uncloak.md",
+    "research/EPF/Reading List.md",
     "research/EPF/Weekly Updates/Week 2.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
-    "research/Notes/books/Crytpo Eng Exercises.md",
     "research/Notes/books/articles/QAP-VB.md",
     "Pasted image 20221108104618.png.md",
     "research/EPF/Weekly Updates/Week 1 - Survey.md",

@@ -38,5 +38,15 @@ ____
 - Learning a lot from Euler in Rust vids so wanna finish [this one](https://youtu.be/2NPX6v0qqp0) today.
 	- Thursday to start working on [the repo](https://github.com/doulos819/euler-rust)
 
-#### Wednesday
-- 
+My grandmother passed away Nov 18th which was the same day as the first study group session. The session went well overall, some notes:
+- Need better connectivity regardless of environment
+- Would like to set up an Uncloak YT channel for simple OBS stream of whatever platform and then to YT.
+- Many people have suggested https://www.descript.com/ as an efficient option for this type of MOOC set up (more for recordings, less for streams it seems)
+
+I am also helping to lead a small (10 person) exercise group.
+- week 1 https://hackmd.io/@thor314/H12nS4SLj
+- repo: https://github.com/doulos819/uncloak-cesg 
+
+Goal is to work on the exercises over the weekends on my own, start getting support from mentor early in the week, work with small group on exercises mid week, and submit pr to github repo on friday right before the class.
+
+This will reflect in the [EPF project](https://github.com/doulos819/mjr/blob/main/research/EPF/Project-Uncloak.md) submission.

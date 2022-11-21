@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/EPF/Weekly-Updates/Week-3.md",
+                "file": "research/EPF/Weekly-Updates/Week-2.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/EPF/Weekly-Updates/Week-3.md",
+                "file": "research/EPF/Weekly-Updates/Week-2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/EPF/Weekly-Updates/Week-3.md",
+                "file": "research/EPF/Weekly-Updates/Week-2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/EPF/Weekly-Updates/Week-3.md"
+                "file": "research/EPF/Weekly-Updates/Week-2.md"
               }
             }
           }
@@ -151,15 +151,15 @@
   },
   "active": "1072ba99dd2d8ce0",
   "lastOpenFiles": [
+    "research/EPF/Weekly-Updates/Week-1.md",
+    "research/EPF/Weekly-Updates/Week-0.md",
+    "research/EPF/Weekly-Updates/Week-3.md",
     "research/EPF/Project-Uncloak.md",
     "research/Notes/books/Crytpo Eng Exercises.md",
-    "research/EPF/Weekly-Updates/Week-3.md",
     "research/EPF/Reading List.md",
-    "research/EPF/Weekly-Updates/Week 2.md",
+    "research/EPF/Weekly-Updates/Week-2.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/Notes/books/articles/QAP-VB.md",
-    "Pasted image 20221108104618.png.md",
-    "research/EPF/Weekly-Updates/Week 1 - Survey.md",
-    "images/Pasted image 20221024115132.png"
+    "Pasted image 20221108104618.png.md"
   ]
 }

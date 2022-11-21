@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/EPF/Weekly Updates/Week-3.md",
+                "file": "research/EPF/Weekly-Updates/Week-3.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/EPF/Project-Uncloak.md",
+                "file": "research/EPF/Weekly-Updates/Week-3.md",
                 "mode": "source",
                 "source": false
               }
@@ -82,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/EPF/Project-Uncloak.md",
+                "file": "research/EPF/Weekly-Updates/Week-3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/EPF/Project-Uncloak.md",
+                "file": "research/EPF/Weekly-Updates/Week-3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/EPF/Project-Uncloak.md"
+                "file": "research/EPF/Weekly-Updates/Week-3.md"
               }
             }
           }
@@ -150,17 +149,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "964ee0aa1b650a38",
+  "active": "1072ba99dd2d8ce0",
   "lastOpenFiles": [
-    "research/Notes/books/Crytpo Eng Exercises.md",
-    "research/EPF/Weekly Updates/Week-3.md",
     "research/EPF/Project-Uncloak.md",
+    "research/Notes/books/Crytpo Eng Exercises.md",
+    "research/EPF/Weekly-Updates/Week-3.md",
     "research/EPF/Reading List.md",
-    "research/EPF/Weekly Updates/Week 2.md",
+    "research/EPF/Weekly-Updates/Week 2.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/Notes/books/articles/QAP-VB.md",
     "Pasted image 20221108104618.png.md",
-    "research/EPF/Weekly Updates/Week 1 - Survey.md",
+    "research/EPF/Weekly-Updates/Week 1 - Survey.md",
     "images/Pasted image 20221024115132.png"
   ]
 }

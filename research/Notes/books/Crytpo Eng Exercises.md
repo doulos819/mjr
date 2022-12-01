@@ -68,3 +68,43 @@ with the following 256-bit key (also in hex)
 using *AES*.
 
 10. Write a program that experimentally demonstrates the complementation property for *DES*. This program should take as input a key $K$ and a plaintext $P$ and demonstrate that the $DES$ complementation property holds for this key and plaintext. You may use an existing cryptography library for this exercise.  
+
+### 5.6 Exercises
+- Exercise 5.1 Use a software tool to generate two messages M and M , M = M , that produce a collision for MD5. To generate this collision, use one of the known attacks against MD5. A link to example code for finding MD5 collisions is available at: http://www.schneier.com/ce.html.
+- Exercise 5.2 Using an existing cryptography library, write a program to compute the SHA-512 hash value of the following message in hex: 
+```hex
+48 65 6C 6C 6F 2C 20 77 6F 72 6C 64 2E 20 20 20.
+```
+- Exercise 5.3 Consider SHA-512-n, a hash function that first runs SHA-512 and then outputs only the first n bits of the result. Write a program that uses a birthday attack to find and output a collision on SHA-512-n, where n is a multiple of 8 between 8 and 48. Your program may use an existing cryptography library. Time how long your program takes when n is 8, 16, 24, 32, 40, and 48, averaged over five runs for each n. How long would you expect your program to take for SHA-512-256? For SHA-512-384? For SHA-512 itself?
+- Exercise 5.4 Let SHA-512-n be as in the previous exercise. 
+	- Write a program that finds a message M (a pre-image) that hashes to the following value under SHA-512-8 (in hex):
+		- A9. 
+	- Write a program that finds a message M that hashes to the following value under SHA-512-16 (in hex): 
+		- 3D 4B. 
+	- Write a program that finds a message M that hashes to the following value under SHA-512-24 (in hex): 
+		- 3A 7F 27. 
+	- Write a program that finds a message M that hashes to the following value under SHA-512-32 (in hex): 
+		- C3 C0 35 7C. 
+	- Time how long your programs take when n is 8, 16, 24, and 32, averaged over five runs each. Your programs may use an existing cryptography library. How long would you expect a similar program to take for SHA-512-256? For SHA-512-384? For SHA-512 itself?
+- Exercise 5.5 In Section 5.2.1, we claimed that m and m both hash to H2. Show why this claim is true.??
+
+### 6.8 Exercises
+- Exercise 6.2 Suppose c is one block long, a and b are strings that are a multiple of the block length, and M(a || c) = M(b || c). Here M is CBC-MAC. Then M(a || d) = M(b || d) for any block d. Explain why this claim is true.
+- Exercise 6.3 Suppose a and b are both one block long, and suppose the sender MACs a, b, and a || b with CBC-MAC. An attacker who intercepts the MAC tags for these messages can now forge the MAC for the message b || (M(b) ⊕ M(a) ⊕ b), which the sender never sent. The forged tag for this message is equal to M(a || b), the tag for a || b. Justify mathematically why this is true.
+- Exercise 6.4 Suppose message a is one block long. Suppose that an attacker has received the MAC t for a using CBC-MAC under some random key unknown to the attacker. Explain how to forge the MAC for a two-block message of your choice. What is the two-block message that you chose? What is the tag that you chose? Why is your chosen tag a valid tag for your two-block message?
+- Exercise 6.5 Using an existing cryptography library, compute the MAC of the message 
+```hex
+4D 41 43 73 20 61 72 65 20 76 65 72 79 20 75 73 65 66 75 6C 20 69 6E 20 63 72 79 70 74 6F 67 72 61 70 68 79 21 20 20 20 20 20 20 20 20 20 20 20 
+```
+	- using CBC-MAC with AES and the 256-bit key
+```hex
+80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
+```
+- Exercise 6.7 Using an existing cryptography library, compute the MAC of the message
+```hex
+4D 41 43 73 20 61 72 65 20 76 65 72 79 20 75 73 65 66 75 6C 20 69 6E 20 63 72 79 70 74 6F 67 72 61 70 68 79 21 
+```
+	-  using GMAC with AES and the 256-bit key 
+```hex
+80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 and the nonce 00 00 00 00 00 00 00 00 00 00 00 01.
+```

@@ -546,4 +546,145 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
 ## Ch 4. Block Cipher Modes
 >
 
- 
+## Ch 5. Hash Functions
+> A hash function is a function that takes as input an arbitrarily long string of bits (or bytes) and produces a fixed-size result. A typical use of a hash function is digital signatures.
+
+- The result of $h$ is typically between 128 and 1024 bits, compared to multiple thousands or millions of bits for the message $m$ itself.
+- Signing $h(m)$ is therefore much faster than signing m directly.
+- Many times when you have a variable-sized value, you can use a hash function to map it to a fixed-size value.
+- Hash functions can be used in cryptographic pseudorandom number generators to generate several keys from a single shared secret.
+- And they have a one-way property
+
+### 5.1 Security of Hash Functions
+- collision resistance. A collision is two different inputs m1 and m2 for which h(m1) = h(m2).
+- Thus, a hash function is never collision-free. The collision-resistance requirement merely states that, although collisions exist, they cannot be found.
+- In practice, cryptographic designers expect a hash function to be a random mapping. Therefore, we require that a hash function be indistinguishable from a random mapping.
+- ** Definition 4** The ideal hash function behaves like a random mapping from all possible input values to the set of all possible output values.
+- **Definition 5** An attack on a hash function is a non-generic method of distinguishing the hash function from an ideal hash function.
+- Unlike the block cipher, the hash function has no key, and there is no generic attack like the exhaustive key search.
+- One generic attack on a hash function is the birthday attack, which generates collisions. For a hash function with an n-bit output, this requires about 2n/2 steps.
+- In other situations, the goal is to find a pre-image (given x, find an m with h(m) = x), or to find some kind of structure in the hash outputs. The generic pre-image attack requires about 2n steps.
+- As with block ciphers, we allow a reduced security level if it is specified. We can imagine a 512-bit hash function that specifies a security level of 128 bits. In that case, distinguishers are limited to 2128 steps.
+
+### 5.2 Real Hash Functions
+- Almost all real-life hash functions, and all the ones we will discuss, are iterative hash functions.
+- Iterative hash functions split the input into a sequence of fixed-size blocks m1, ... , mk, using a padding rule to fill out the last block.
+- A typical block length is 512 bits, and the last block will typically contain a string representing the length of the input.
+- The message blocks are then processed in order, using a compression function and a fixed-size intermediate state. This process starts with a fixed value H0, and defines Hi = h (Hi−1, mi). 
+- The final value Hk is the result of the hash function.
+
+### 5.2.2 MD5
+- MD5 has now been broken too. You will still hear people talk about MD5, however, and it is still in use in some real systems.
+- MD5 has a 128-bit state that is split into four words of 32 bits each.
+- This structure of operating on 32-bit words is very efficient on 32-bit CPUs.
+- For most applications, the 128-bit hash size of MD5 is insufficient. 
+	- Using the birthday paradox, we can trivially find collisions on any 128-bit hash function using 264 evaluations of the hash function.
+- MD5’s internal structure makes it vulnerable to more efficient attacks.
+- But recent cryptanalytic advances, beginning with Wang and Yu [124], have now shown that it is actually possible to find collisions for the full MD5 using much fewer than 264 MD5 computations.
+
+#### 5.2.3 SHA-1
+- Independent of any internal weaknesses, the main problem with SHA-1 is the 160-bit result size. Collisions against any 160-bit hash function can be generated in only 280 steps, well below the security level of modern block ciphers with key sizes from 128 to 256 bits.
+- Although it took longer for SHA-1 to fall than MD5, we now know that it is possible to find collisions in SHA-1 using much less work than 280 SHA-1 computations.
+
+#### 5.2.4 SHA-224, SHA-256, SHA-384, and SHA-512
+- These hash functions are collectively referred to as the SHA-2 family of hash functions.
+- 
+- SHA-256 is much slower than SHA-1. For long messages, computing a hash with SHA-256 takes about as much time as encrypting the message with AES or Twofish, or maybe a little bit more. This is not necessarily bad, and is an artifact of its conservative design.
+
+### 5.3 Weaknesses of Hash Functions
+- Our greatest concern about all these hash functions is that they have a length extension bug that leads to real problems and that could easily have been avoided.
+- The length extension problem exists because there is no special processing at the end of the hash function computation. The result is that $h(m)$ provides direct information about the intermediate state after the first $k$ blocks of $m'$.
+- This property immediately disqualifies all of the mentioned hash functions, according to our security definition. All a distinguisher has to do is to construct a few suitable pairs $(m, m')$ and check for this relationship. You certainly wouldn’t find this relationship in an ideal hash function.
+
+#### 5.3.2 Partial-Message Collision
+- A second problem is inherent in the iterative structure of most hash functions. We’ll explain the problem with a specific distinguisher.
+- For a perfect hash function of size n, we expect that this construction has a security level of n bits. The attacker cannot do any better than to choose an m, get the system to authenticate it as h(m || X), and then search for X by exhaustive search.
+- The attacker can do much better with an iterative hash function.
+- The attacker can do much better with an iterative hash function. She finds two strings $m$ and $m'$ that lead to a collision when hashed by h. This can be done using the birthday attack in only 2n/2 steps or so.
+
+### 5.4 Fixing the Weaknesses
+- Leaving weaknesses in the hash function is a very bad idea.
+
+#### 5.4.1 Toward a Short-term Fix
+- **Definition 6** Let h be an iterative hash function. The hash function $h_{DBL}$ is defined by $h_{DBL}(m) := h(h(m) || m)$.
+- We believe that if h is any of the newer SHA-2 family hash functions, this construction has a security level of n bits, where n is the size of the hash result. A disadvantage of this approach is that it is slow.
+
+#### 5.4.2 A More Efficient Short-term Fix
+- **Definition 7** Let h be an iterative hash function, and let b denote the block length of the underlying compression function. The hash function hd is defined by $h_d(m) := h(h(0^b || m))$, and has a claimed security level of min(k, n/2) where k is the security level of h and n is the size of the hash result.
+   Here b is the block length of the underlying compression function, so 0^b || m equates to prepending the message with an all zero block before hashing.
+- We will use this construction mostly in combination with hash functions from the SHA family.
+- SHAd-256 is just the function $m \rightarrow SHA-256(SHA-256(0^{512} || m))$, for example.
+- Whether $h_{DBL}$ in fact has a security level of n bits remains to be seen. We would trust both of them up to n/2 bits of security, so in practice we would use the more efficient h_d construction.
+
+#### 5.4.3 Another Fix
+- There is another fix to some of these weaknesses with the SHA-2 family of iterative hash functions: Truncate the output. If a hash function produces n-bit outputs, only use the first n − s of those bits as the hash value for some positive s.
+- For 128 bits of security, you could hash with SHA-512, drop 256 bits of the output, and return the remaining 256 bits as the result of the truncated hash function. The result would be a 256-bit hash function which, because of birthday attacks, would meet our 128-bit security design goal.
+
+### 5.5 Which Hash Function Should I Choose?
+- SHA-3
+
+## Ch. 6 Message Authentication Codes
+> A message authentication code, or MAC, is a construction that detects tampering with messages. Encryption prevents Eve from reading the messages but does not prevent her from manipulating the messages. This is where the MAC comes in.
+
+### 6.1 What a MAC Does
+-  We’ll write the MAC function as mac(K, m). To authenticate a message, Alice sends not only the message m but also the MAC code mac(K, m), also called the tag.
+- Bob uses the MAC verification algorithm to verify that T is a valid MAC under key K for message $m'$.
+
+### 6.2 The Ideal MAC and MAC Security
+- The primary difference is that block ciphers are permutations, whereas MACs are not.
+- The ideal MAC is a random mapping. Let n be the number of bits in the result of a MAC. Our definition of an ideal MAC is:
+- Definition 8 An ideal MAC function is a random mapping from all possible inputs to n-bit outputs.
+- Definition 9 An attack on a MAC is a non-generic method of distinguishing the MAC from an ideal MAC function.
+- The more restrictive standard definition is one in which an attacker selects n different messages of her choosing, and is given the MAC value for each of these messages. The attacker then has to come up with n + 1 messages, each with a valid MAC value.
+
+### 6.3 CBC-MAC and CMAC**
+- CBC-MAC is a classic method of turning a block cipher into a MAC.
+- The idea behind CBC-MAC is to encrypt the message m using CBC mode and then throw away all but the last block of ciphertext.
+- For a message P1, ... , Pk, the MAC is computed as: 
+	- $H_0 := \text{IV}$
+	- $H_i := E_K(P_i ⊕ H_{i−1})$ 
+	- $\text{MAC} := H_k$
+- In general, one should never use the same key for both encryption and authentication.
+- There are a number of different collision attacks on CBC-MAC that effectively limit the security to half the length of the block size [20].
+- Here is a simple collision attack:
+	- let M be a CBC-MAC function.
+	- If we know that M(a) = M(b) then we also know that M(a || c) = M(b || c).
+		- This is due to the structure of CBC-MAC.
+	- M(a || c) = EK(c ⊕ M(a)) 
+	- M(b || c) = EK(c ⊕ M(b))
+		- and these two must be equal, because M(a) = M(b).
+	- Because of birthday attack, this takes $2^{64}$ steps for a 128-bit block cipher
+	- If you wish to use CBC-MAC, you should instead do the following:
+		1. Construct a string s from the concatenation of l and m, where l is the length of m encoded in a fixed-length format. 
+		2. Pad s until the length is a multiple of the block size. (See Section 4.1 for details.) 
+		3. Apply CBC-MAC to the padded string s. 
+		4. Output the last ciphertext block, or part of that block. Do not output any of the intermediate values.
+- CMAC works almost exactly like CBC-MAC, except it treats the last block differently. Specifically, CMAC xors one of two special values into the last block prior to the last block cipher encryption.
+- The xoring of these values into the MAC disrupts the attacks that compromise CBC-MAC when used for messages of multiple lengths.
+
+### 6.4 HMAC
+- HMAC computes h(K ⊕ a || h(K ⊕ b || m)), where a and b are specified constants.
+- The message itself is only hashed once, and the output is hashed again with the key.
+- To achieve our 128-bit security level, we would only use it with a 256-bit hash function such as SHA-256.
+
+### 6.5 GMAC
+- The GMAC authentication function takes three values as input— the key, the message to authenticate, and a nonce.
+- Unforgeability definition: 
+- Under the hood, GMAC uses something called an universal hash function
+- consider a model in which an attacker selects n different messages of his choosing, and is given the MAC value for each of these messages:
+	- The attacker then has to come up with n + 1 messages, each with a valid MAC value. 
+	- If an attacker can’t do this, then the MAC is unforgeable.
+- GMAC computes a simple mathematical function of the input message.
+- GMAC then encrypts the output of that function with a block cipher in CTR mode to get the tag.
+- Requiring the system to provide a nonce can be risky because security can be undone if the system provides the same value for the nonce more than once.
+
+### 6.6 Which MAC to Choose?**
+- HMAC - As far as we know, there is no collision attack on the MAC value if it is used in the traditional manner, so truncating the results from HMAC-SHA-256 to 128 bits should be safe, given current knowledge in the field.
+- GMAC is fast, but provides only at most 64 bits of security and isn’t suitable when used to produce short tags.
+
+### 6.7 Using a MAC
+- The Horton Principle: Authenticate what is meant, not what is said.
+- You should authenticate the meaning, not the message. This means that the MAC should authenticate not only m, but also all the information that Bob uses in parsing m into its meaning.
+- data like protocol identifier, protocol version number, protocol message identifier, sizes for various fields, etc. One partial solution is to not just concatenate the fields but use a data structure like XML that can be parsed without further information.
+  >To recap: whenever you do authentication, always think carefully about what other information should be included in the authentication. Be sure that you code all of this information, including the message, into a string of bytes in a way that can be parsed back into the fields in a unique manner. Do not forget to apply this to the concatenation of the additional data and the message we discussed at the start of this section. If you authenticate d || m, you had better have a fixed rule on how to split the concatenation back into d and m.
+

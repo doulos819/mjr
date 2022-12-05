@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/books/articles/Hash-Funcions-HoA.md",
+                "file": "research/Notes/books/articles/Hash-Functions-HoA- Lessons.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -110,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/articles/Hash-Funcions-HoA.md",
+                "file": "research/Notes/books/articles/Hash-Functions-HoA- Lessons.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/articles/Hash-Funcions-HoA.md",
+                "file": "research/Notes/books/articles/Hash-Functions-HoA- Lessons.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/articles/Hash-Funcions-HoA.md"
+                "file": "research/Notes/books/articles/Hash-Functions-HoA- Lessons.md"
               }
             }
           }

@@ -633,8 +633,8 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
 ### 6.2 The Ideal MAC and MAC Security
 - The primary difference is that block ciphers are permutations, whereas MACs are not.
 - The ideal MAC is a random mapping. Let n be the number of bits in the result of a MAC. Our definition of an ideal MAC is:
-- Definition 8 An ideal MAC function is a random mapping from all possible inputs to n-bit outputs.
-- Definition 9 An attack on a MAC is a non-generic method of distinguishing the MAC from an ideal MAC function.
+	- Definition 8 An ideal MAC function is a random mapping from all possible inputs to n-bit outputs.
+	- Definition 9 An attack on a MAC is a non-generic method of distinguishing the MAC from an ideal MAC function.
 - The more restrictive standard definition is one in which an attacker selects n different messages of her choosing, and is given the MAC value for each of these messages. The attacker then has to come up with n + 1 messages, each with a valid MAC value.
 
 ### 6.3 CBC-MAC and CMAC**
@@ -689,4 +689,4 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
   >To recap: whenever you do authentication, always think carefully about what other information should be included in the authentication. Be sure that you code all of this information, including the message, into a string of bytes in a way that can be parsed back into the fields in a unique manner. Do not forget to apply this to the concatenation of the additional data and the message we discussed at the start of this section. If you authenticate d || m, you had better have a fixed rule on how to split the concatenation back into d and m.
   
   ## Ch. 7
-
+- [week-4](week-4.md)

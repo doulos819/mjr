@@ -14,7 +14,10 @@ Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/boo
 - [[Object-Cryptograpgy Engineering#Ch 2. Introduction to Cryptography |Ch 2 - intro to Crypto]]
 [[Object-Cryptograpgy Engineering#Part 2: Message Security |Part 2: Message Security]]
 - [Ch 3. Block Ciphers](Cryptography%20Engineering%20-%202010#Ch%203.%20Block%20Ciphers)
-- Ch 4
+- [Ch 4. Block Cipher Modes](Cryptography%20Engineering%20-%202010.md#Ch%204.%20Block%20Cipher%20Modes)
+- [Ch 5. Hash Functions](#Ch%205.%20Hash%20Functions)
+- [Ch. 6 Message Authentication Codes](#Ch.%206%20Message%20Authentication%20Codes)
+- [Ch. 7 TLS/SSL - Secure Channels](week-4.md)
 
 >[!Abstract]
 >Most books cover what cryptography is, but this book provides invaluable resources for anyone working with cryptography. Cryptography and security engineers need to know more than just how protocols work; they need to know how to USE CRYPTOGRAPHY! 
@@ -648,19 +651,19 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
 - There are a number of different collision attacks on CBC-MAC that effectively limit the security to half the length of the block size [20].
 - Here is a simple collision attack:
 	- let M be a CBC-MAC function.
-	- If we know that M(a) = M(b) then we also know that M(a || c) = M(b || c).
+	- If we know that $M(a) = M(b)$ then we also know that $M(a || c) = M(b || c)$.
 		- This is due to the structure of CBC-MAC.
-	- M(a || c) = EK(c ⊕ M(a)) 
-	- M(b || c) = EK(c ⊕ M(b))
-		- and these two must be equal, because M(a) = M(b).
+	- $M(a || c) = E_K(c \oplus M(a))$ 
+	- $M(b || c) = E_K(c \oplus M(b))$ 
+		- and these two must be equal, because $M(a) = M(b)$.
 	- Because of birthday attack, this takes $2^{64}$ steps for a 128-bit block cipher
 	- If you wish to use CBC-MAC, you should instead do the following:
-		1. Construct a string s from the concatenation of l and m, where l is the length of m encoded in a fixed-length format. 
-		2. Pad s until the length is a multiple of the block size. (See Section 4.1 for details.) 
-		3. Apply CBC-MAC to the padded string s. 
+		1. Construct a string $s$ from the concatenation of $l$ and $m$, where $l$ is the length of $m$ encoded in a fixed-length format. 
+		2. Pad $s$ until the length is a multiple of the block size. (See Section 4.1 for details.) 
+		3. Apply CBC-MAC to the padded string $s$. 
 		4. Output the last ciphertext block, or part of that block. Do not output any of the intermediate values.
 - CMAC works almost exactly like CBC-MAC, except it treats the last block differently. Specifically, CMAC xors one of two special values into the last block prior to the last block cipher encryption.
-- The xoring of these values into the MAC disrupts the attacks that compromise CBC-MAC when used for messages of multiple lengths.
+	- The xoring of these values into the MAC disrupts the attacks that compromise CBC-MAC when used for messages of multiple lengths.
 
 ### 6.4 HMAC
 - HMAC computes h(K ⊕ a || h(K ⊕ b || m)), where a and b are specified constants.

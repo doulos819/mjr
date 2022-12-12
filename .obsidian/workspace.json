@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/books/articles/ChaCha-Poly.md",
+                "file": "research/Notes/books/articles/AE-Relations.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/articles/ChaCha-Poly.md",
+                "file": "research/Notes/books/articles/AE-Relations.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/articles/ChaCha-Poly.md",
+                "file": "research/Notes/books/articles/AE-Relations.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/articles/ChaCha-Poly.md"
+                "file": "research/Notes/books/articles/AE-Relations.md"
               }
             }
           }
@@ -138,15 +139,15 @@
   },
   "active": "7b9cfbc945a6af4a",
   "lastOpenFiles": [
-    "research/Notes/books/articles/TLS-SSL.md",
-    "research/Notes/books/articles/ChaCha-Poly.md",
     "research/Notes/CESG/week-4.md",
+    "research/Notes/books/articles/Authenticated-Encryption.md",
+    "research/Notes/books/Cryptography Engineering - 2010.md",
+    "README.md",
+    "research/Notes/books/articles/ChaCha-Poly.md",
+    "research/Notes/books/articles/TLS-SSL.md",
     "ssl.md",
     "research/Notes/books/Crytpo Eng Exercises.md",
     "research/Notes/books/articles/DES-Cryptanalysis.md",
-    "research/Notes/books/articles/EF1P-Number-Theory.md",
-    "research/Notes/books/Cryptography Engineering - 2010.md",
-    "research/Notes/books/articles/AE-Relations.md",
-    "research/Notes/CESG/week-4/Untitled.md"
+    "research/Notes/books/articles/EF1P-Number-Theory.md"
   ]
 }

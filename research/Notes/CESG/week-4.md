@@ -31,9 +31,17 @@
 
 1. Justify or disqualify each of the following schemes, with message $m$, tag $t$, and ciphertext $c$.
 	- $t = MAC(m)$     $c = E(m)$, send $(c, t)$
+		- because $c,t$ both relate to $m$, is too much data given? linear relation?
 	- $t = MAC(m)$     $c = E(m||t)$, send $c$
-	- $c = E(m)$           $t = MAC(c)$, send $(c,t)$ 
+		- seems more secure, $t$ is never sent in clear. Encrypted with || m, but not sure if extra data needs to be sent to decrypt? Aren't you supposed to concat $0^b$ or random instead of $m$? 
+	- $t = MAC(c)$       $c = E(m)$, send $(c,t)$ 
+		- seems secure and allows the receiver, with $c,t$, check if $c$ has been tampered with from seeing $t$. 
+
 2. You're the adversary, watching a TLS handshake. Pick three steps from [TLS Handshake - OSDev Wiki](https://wiki.osdev.org/TLS_Handshake#Handshake_Overview), and describe how the step prevents you from (pick one):
     -   reading message content (confidentiality)
+	    - The server sends a Server Key Exchange message, initiating the key exchange and signing it with its public key
     -   tampering with message content (integrity)
+	    - The client sends a Change Cipher Spec message: if the server cannot respond correctly, then the message may have been tampered with. 
+	    - The server sends a Server Key Exchange message, initiating the key exchange and signing it with its public key: because server signed with public key, 
     -   impersonating either party (authenticity)
+	    - The server sends its certificates. These are used by the client to verify that it is actually talking to the site it thinks it is talking to, as opposed to a malicious site

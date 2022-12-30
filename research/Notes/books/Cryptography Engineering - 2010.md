@@ -18,6 +18,9 @@ Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/boo
 - [Ch 5. Hash Functions](#Ch%205.%20Hash%20Functions)
 - [Ch. 6 Message Authentication Codes](#Ch.%206%20Message%20Authentication%20Codes)
 - [Ch. 7 TLS/SSL - Secure Channels](week-4.md)
+- [Ch. 8 Implementation Issues](#Ch.%208%20Implementation%20Issues)
+[Part 3: Key Negotiation](#Part%203:%20Key%20Negotiation)
+- [Ch 9. Generating Randomness](#Ch%209.%20Generating%20Randomness)
 
 >[!Abstract]
 >Most books cover what cryptography is, but this book provides invaluable resources for anyone working with cryptography. Cryptography and security engineers need to know more than just how protocols work; they need to know how to USE CRYPTOGRAPHY! 
@@ -693,3 +696,357 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
   
   ## Ch. 7
 - [week-4](week-4.md)
+
+## Ch. 8 Implementation Issues
+> Easy to screw up the security at the implementation level. In fact, implementation errors such as buffer overflows are one of the biggest security problems in real-world systems.
+
+- impossible to implement a secure system
+	- some systems are not designed for security, but we do our best to make sure at least our part is secure.
+	- We care mostly about our own part of the system because it is all we can control.
+- Attacks on crypto can be invisible and attacks on crypto are unlikely to be noticed.
+- Long term goal is secure computer systems.
+	- Try our best to make sure weakest link is not the crypto, easy to switch crypto systems after implemented. 
+- Changing communication protocols can take a while and they can be in use for 30-50 years after implementation. 
+
+#### 8.1.1 Specs
+> If there are no specifications, then you cannot even check whether a program is correct or not. For such programs, the whole concept of correctness is undefined.
+
+- functional specification: in practice... this document often does not exist, is incomplete, or specifies things that are irrelevant for the behavior of the program.
+- There are really three stages in the specification process::
+	1. Requirements are an informal description of what the program is supposed to achieve. I
+	2. The functional specification gives a detailed and exhaustive definition of the behavior of the program. 
+		- Anything not in the functional specification does not have to be implemented. Any item can, and should, be tested.
+	3. Implementation design This document has many names, but it specifies how the program works internally. It contains all of the things that cannot be tested from the outside.
+- Of these three documents, the functional specification is without a doubt the most important one.
+- Without functional specifications, there is no way to even describe what you have achieved in the end when the program is finished.without functional specifications, there is no way to even describe what you have achieved in the end when the program is finished.
+
+#### 8.1.2 Test and Fix
+> The second problem in writing correct programs is the test-and-fix development method that is in almost universal use. Programmers write a program, and then test whether it behaves correctly.
+
+- If it doesn’t, they fix the bugs and test again. As we all know, this does not lead to a correct program. It results in a program that kind of works in the most common situations.
+- There are some simple rules about bugs that any good software engineering book includes:
+	- If you find a bug, first implement a test that detects the bug. Check that the bug is detected. Then fix the bug, and check that the test no longer finds the bug. And then keep running that test on every future version to make sure the bug does not reappear. - -
+	- Whenever you find a bug, think about what caused it. Are there any other places in the program where a similar bug might reside? Go check them all. 
+	- Keep track of every bug you find. Simple statistical analysis of the bugs you have found can show you which part of the program is especially buggy, or what type of error is made most frequently, etc. Such feedback is necessary for a quality control system.
+
+#### 8.1.3 Lax Attitude
+> The third problem is the incredibly lax attitude of many in the computer industry. Errors in programs are frequently accepted as a matter of course.
+
+- ’ Software companies routinely ship products with known bugs in them. This wouldn’t be so bad if they only sold computer games, but nowadays our work, our economy, and—more and more—our lives depend on software.
+- If a car manufacturer finds a defect (bug) in a car after it was sold, they will recall the car and fix it. 
+- Software companies get away with disclaiming any and all liability in their software license, something they wouldn’t be allowed to do if they produced any other product. 
+- This lax attitude means there are still not enough serious efforts being made at producing correct software.
+
+#### 8.1.4 So How Do We Proceed?
+> Don’t ever think that all you need is a good programmer or code reviews or an ISO 9001–certified development process or extensive testing or even a combination of all of them. Reality is much more difficult.
+
+- The airline industry has been amazingly effective at making flying secure. We would do well to learn all we can from them. Maybe writing correct software would cost an order of magnitude more than what we are used to now. But given the cost to society of the bugs in software that we see today, we are sure it would be cost-effective in the long run.
+
+### 8.2 Creating Secure Software
+> Just writing correct software is not good enough for a security system. The software must be secure as well. What is the difference?
+
+- Correct software has a specified functionality. If you hit button A, then B will happen. Secure software has an additional requirement: a lack of functionality. 
+	- No matter what the attacker does, she cannot do X. This is a very fundamental difference; you can test for functionality, but not for lack of functionality.
+- The inevitable conclusion is: Standard implementation techniques are entirely inadequate to create secure code.
+- Let us make our point of view clear: unless you are willing to put real effort into developing a secure implementation, there is little point in bothering with the cryptography. Designing cryptographic systems might be fun, but cryptography is generally only a small part of a larger system.
+
+### 8.3 Keeping Secrets
+> from this blog: https://benma.github.io/2020/10/16/rust-zeroize-move.html
+
+### A pitfall of Rust's move/copy/drop semantics and zeroing data
+> oct 16, 2020: We are using Rust extensively in the firmware of the [BitBox02](https://shiftcrypto.ch/bitbox02/) hardware wallet.
+
+- In a security device like this, you don’t want to leave sensitive material in memory for longer than necessary.
+-  In particular, when the value is being dropped, the memory should be safely overwritten with zeroes, to mitigate the risks of the memory leaking.
+- [zeroize](https://docs.rs/zeroize/1.1.1/zeroize/) is a crate designed to make this task easy and safe.
+	-  it allows you to wrap your types in `zeroize::Zeroize<>`, so the value will be automatically zeroed on drop.
+- It turns out it is still quite easy to accidentally leave copies of the sensitive data in memory.
+```rust
+use zeroize::Zeroize;
+
+#[derive(Debug)]
+struct EncryptionKey([u8; 4]);
+
+impl Drop for EncryptionKey {
+    fn drop(&mut self) {
+        println!("Pointer when zeroing: {:p}", self.0.as_ptr());
+        self.0.zeroize();
+        println!("Zeroed. Remaining value: {:?}", self.0);
+    }
+}
+
+fn get_encryption_key() -> EncryptionKey {
+    let key = EncryptionKey(*b"AKey");
+    println!("Pointer at creation: {:p}", key.0.as_ptr());
+    key
+}
+
+fn main() {
+    let encryption_key = get_encryption_key();
+    let ptr = encryption_key.0.as_ptr();
+
+    println!("Pointer when using: {:p}", encryption_key.0.as_ptr());
+    println!("Using key to encrypt stuff: {:?}", encryption_key);
+
+    println!("About to drop.");
+    drop(encryption_key);
+    println!("Dropped.");
+
+    println!("Memory: {:?}", unsafe {
+        core::slice::from_raw_parts(ptr, 4)
+    });
+```
+
+}
+- Output: 
+```rust
+Pointer at creation: 0x7ffd632b0ba8
+Pointer when using: 0x7ffd632b0c90
+Using key to encrypt stuff: EncryptionKey([65, 75, 101, 121])
+About to drop.
+Pointer when zeroing: 0x7ffd632b0c10
+Zeroed. Remaining value: [0, 0, 0, 0]
+Dropped.
+Memory: [65, 75, 101, 121]
+```
+- in Rust, **moving** a value compiles into a **memory copy** in the general case.
+	- For example, the `key` var in `get_encryption_key()` is a local stack variable, so returning it (moving it out of the function) must be a memory copy under the hood.
+	- What about the manual `drop()`? Same thing: the value is _moved_ into the `drop()` function, but the value is copied in memory while doing so.
+- To fix this, stack vars can be allocated at the top and pushed down into functions as mutable arguments, but that leads to hard to understand and hard to maintain code. 
+
+It is much easier to use the heap from the start, where the location is permanent (_caveats apply here too, as described by the zeroize docs!_).
+
+What is copied is not the underlying data, but just the `Box` metadata:
+
+```rust
+use zeroize::Zeroize;
+
+#[derive(Debug)]
+struct EncryptionKey(Box<[u8; 4]>);
+
+impl Drop for EncryptionKey {
+    fn drop(&mut self) {
+        println!("Pointer when zeroing: {:p}", self.0.as_ptr());
+        self.0.zeroize();
+        println!("Zeroed. Remaining value: {:?}", self.0);
+    }
+}
+
+fn get_encryption_key() -> EncryptionKey {
+    let key = EncryptionKey(Box::new(*b"AKey"));
+    println!("Pointer at creation: {:p}", key.0.as_ptr());
+    key
+}
+
+fn main() {
+    let encryption_key = get_encryption_key();
+    let ptr = encryption_key.0.as_ptr();
+    
+    println!("Pointer when using: {:p}", encryption_key.0.as_ptr());
+    println!("Using key to encrypt stuff: {:?}", encryption_key);
+
+    println!("About to drop.");
+    drop(encryption_key);
+    println!("Dropped.");
+
+    println!("Memory: {:?}", unsafe {
+        core::slice::from_raw_parts(ptr, 4)
+    });
+}
+
+```
+
+Output:
+
+```rust
+Pointer at creation: 0x558449695b40
+Pointer when using: 0x558449695b40
+Using key to encrypt stuff: EncryptionKey([65, 75, 101, 121])
+About to drop.
+Pointer when zeroing: 0x558449695b40
+Zeroed. Remaining value: [0, 0, 0, 0]
+Dropped.
+Memory: [0, 0, 0, 0]
+```
+
+>The rest of 8.3...
+>Anytime you work with cryptography, you are dealing with secrets. And secrets have to be kept. This means that the software that deals with the secrets has to ensure that they don’t leak out
+
+- For the secure channel we have two types of secrets: the keys and the data.
+	- Both of these secrets are transient secrets; we don’t have to store them for a long time.
+		- The data is only stored while we process each message. 
+		- The keys are only stored for the duration of the secure channel.
+- Transient secrets are kept in memory. Unfortunately, the memory on most computers is not very secure.
+
+#### 8.3.1 Wiping State
+> A basic rule of writing security software: wipe any information as soon as you no longer need it. The longer you keep it, the higher the chance that someone will be able to access it.
+
+- If you write a library for others to use, you have to depend on the main program to inform you that the state is no longer needed. 
+	- For example, when the communication connection is closed, the crypto library should be informed so that it can wipe the secure channel session state. 
+		- The library can contain a function for this, but there’s a reasonable chance that the programmer of the application won’t call this function. After all, the program works perfectly well without calling this function
+- . A typical security-relevant function performs some computations in local variables, and then tries to wipe them.
+- It is not uncommon to see code that reveals data that it happens to find in memory.
+	- If the memory is given to some library without having been wiped first, the library might leak the data to an attacker.
+	- So check the code that your compiler produces, and make sure the secrets are actually being wiped.
+- There are other places where secret data can end up. All data is eventually loaded into a CPU register.
+	- Wiping registers is not possible in most programming languages, but on register-starved CPUs like the x86, it is very unlikely that any data will survive for any reasonable amount of time.
+- During a context-switch (when the operating system switches from running one program to running the next program), the values in the registers of the CPU are stored in memory where their values might linger for a long time. 
+	- As far as we know, there is nothing you can do about this, apart from fixing the operating system to ensure the confidentiality of that data.
+
+#### 8.3.2 Swap File
+> Most operating systems (including all current Windows versions and all UNIX versions) use a virtual memory system to increase the number of programs that can be run in parallel. While a program is running, not all of its data is kept in memory. Some is stored in a swap file. When the program tries to access data that is not in memory, the program is interrupted.
+
+- The virtual memory system reads the required data from the swap file into a piece of memory, and the program is allowed to continue. 
+	- What’s more, when the virtual memory system decides that it needs more free memory, it will take an arbitrary piece of memory from a program and write it to the swap file.
+- Most software is designed for a cooperative environment, not the adversarial environment that cryptographers work in. 
+	- So our problem is the following: 
+		- the virtual memory system could just take some of the memory of our program and write it to the swap file on disk. The program never gets told, and does not notice. Suppose this happens to the memory in which the keys are stored. If the computer crashes—or is switched off— the data remains on the disk.
+		- There may be no mechanism to wipe the swap file, so the data could linger indefinitely on disk. Who knows who will have access to this swap file in future? We really cannot afford the risk of having our secrets written to the swap file.
+	- So how do we stop the virtual memory system from writing our data to disk? 
+		- On some operating systems there are system calls that you can use to inform the virtual memory system that specified parts of memory are not to be swapped out. (interesting to look into for Linux)
+		- Some operating systems support a secure swap system where the swapped-out data is cryptographically protected.
+	- Assuming you can lock the memory and prevent it from being swapped out, which memory should be locked? 
+		- All the memory that can ever hold secrets, of course.
+	- This brings up a secondary problem. 
+		- Many programming environments make it very hard to know where exactly your data is being stored.
+		- Probably the best solution is to simply lock all the memory of your application.
+			- Even that is not quite as easy as it sounds, because you could lose a number of operating system services such as the automatically allocated stack. And locking all the memory makes the virtual memory system ineffective.
+
+#### 8.3.3 Cashes
+> Modern computers don’t just have a single type of memory. They have a hierarchy of memories.
+
+- At the bottom is the main memory—often gigabytes in size. But because the main memory is relatively slow, 
+	- There is also a cache. This is a smaller but faster memory.
+		- The cache keeps a copy of the most recently used data from the main memory. 
+		- If the CPU wants to access the data, it first checks the cache. 
+			- If the data is in the cache, the CPU gets the data relatively quickly.
+			- If the data is not in the cache, it is read (relatively slowly) from main memory, and a copy is stored in the cache for future use. To make room in the cache, a copy of some other piece of data is thrown away.
+		- This is important because caches keep copies of data, including copies of our secret data.
+- Manufacturers never specify how to wipe data in a guaranteed manner. At least, we have never seen any specifications like that, and as long as it is not specified, we can’t trust it.
+
+#### 8.3.4 Data Retention by Memory
+> Something that surprises many people is that simply overwriting data in memory does not delete the data. 
+
+- If you store data in a memory location, that location slowly starts to ‘‘learn’’ the data. When you overwrite or switch off the computer, the old value is not completely lost.
+	- Depending on the circumstances, just powering the memory off and back on again can recover some or all of the old data.
+- Similar processes happen in DRAM (Dynamic RAM), although they are somewhat more complicated. 
+	- DRAM works by storing a small charge on a very small capacitor. 
+	- The insulating material around the capacitor is stressed by the resulting field. 
+	- The stress results in changes to the material, specifically causing the migration of impurities [57]. 
+		- An attacker with physical control over the memory can potentially recover this data. 
+			- Additionally, because of how DRAM capacitors discharge, their values may remain for seconds at room temperature if power is removed or even longer if the memory is cooled.
+- If your computer is ever compromised (e.g., stolen), you do not want the data that you had in memory to be compromised as well. To achieve this goal, we have to make the computer forget information.
+	- We can only give a partial solution, which works if we make some reasonable assumptions about the memory. This solution, which we call a Boojum, works for relatively small amounts of data, such as keys.
+	- For Boojum: 
+		- let $m$ be the data we want to store. 
+		- Instead of storing $m$, we generate a random string $R$ and store both $R$ and $h(R) ⊕ m$ where $h$ is a hash function. (These two values are stored in different memory locations, preferably not too close together)
+		- One trick is to change R regularly. 
+			- At regular intervals, say every 1 second, we generate a new random $R'$ , and update the memory to store $R ⊕ R' and h(R ⊕ R ) ⊕ m$.
+				- This ensures that each bit of the memory is written with a sequence of random bits. To wipe the memory, you simply write a new $m$ with the value zero.
+		- To read information from this storage, you read both parts, hash the first, and xor them together to get $m$. Writing is done by $\text{xoring}$ the new data with $h(R)$ and storing it in the second location.
+			- Care should be taken that the bits of $R$ and $h(R) ⊕ m$ are not adjacent on the RAM chip.
+			- An even better solution might be to choose two random addresses in a very large address space.
+				- This makes the probability that the two locations are adjacent very small, independent of the actual chip layouts of the memory.
+		- There is still no guarantee that the memory will be wiped. 
+			- If you read the documentation of a memory chip, there are no specifications that prevent the chip from retaining all data ever stored in it. 
+				- No chip does that, of course, but it shows that we can at most achieve a heuristic security.
+		- If you have large amounts of data that need to be kept secret, then the solution of storing two copies and $\text{xoring}$ new random strings into both copies regularly becomes too expensive.
+			- A better solution is to encrypt a large block of data and store the ciphertext in memory that potentially retains information. Only the key needs to be stored in a way that avoids data retention, for example, using a Boojum.
+
+#### 8.3.5 Access by Others
+> There’s yet another problem with keeping secrets on a computer: other programs on the same machine might access the data.
+
+- Some operating systems allow different programs to share memory. If the other program can read your secret keys, you have a serious problem.
+- Under UNIX, it is sometimes possible to force a core-dump of a program. 
+	- The core-dump is a file that contains a memory image of the program data, including all of your secrets.
+- Another danger comes from especially powerful users. Called superusers, or administrators, these users can access things on the machine that normal users cannot. Under UNIX, for example, the superuser can read any part of the memory.
+- In general, your program cannot effectively defend itself against these types of attacks. If you are careful, you may be able to eliminate some of these problems, but often you’ll find yourself limited in what can be achieved. Still, you should consider these issues on the particular platform you are working on.
+
+#### 8.3.6 Data Integrity
+> In addition to keeping secrets, we should protect the integrity of the data we are storing. We use the MAC to protect the integrity of the data during transit, but if the data can be modified in memory, we still have problems.
+
+- If you are unsure about the hardware reliability, perhaps you should spend part of your time and memory simply to verify it, although that is really the operating system’s job.
+- One thing we try to do is make sure the main memory on our machines is ECC (error-correcting code) memory. If there is a single bit failure, then the error-correcting code will detect and correct the error. 
+	- Without ECC memory, any bit error leads to the CPU reading the wrong data.
+	- r. Suppose the engineering is done really well, and each bit has only a $10^{−15}$ chance of failing in each second. If you have 128 MB of memory, then you have about $10^9$ bits of memory, and you can expect one bit failure every 11 days. 
+		- The error rate increases with the amount of memory in the machine, so it is even worse if you have 1 GB of memory, with one failure every 32 hours.
+- Some of the dangers that threaten data confidentiality also endanger the data integrity. Debuggers can sometimes modify your program’s memory. Superusers can directly modify memory, too. Again, there is nothing you can do about it, but it is useful to be aware of the situation.
+
+#### 8.3.7 What to Do
+> Keeping a secret on a modern computer is not as easy as it sounds. There are many ways in which the secret can leak out. To be fully effective, you have to stop all of them.
+
+- You have to do the best you can. This involves a lot of work, all of it specific to the environment you work in.
+- These problems also make it very difficult to create a library with the cryptographic functions in it. Keeping the secrets safe often involves modifications to the main program. And of course, the main program also handles data that should be kept confidential; otherwise, it wouldn’t need the cryptography library in the first place. This is the familiar issue of security considerations affecting every part of the system. (confusing)
+
+### 8.4 Quality of Code
+> If you create an implementation for a cryptographic system, you will have to spend a great deal of time on the quality of the code.
+
+#### 8.4.1 Simplicity
+> Complexity is the main enemy of security. Therefore, any security design should strive for simplicity.
+
+- Eliminate all the options that you can.
+- Get rid of all those baroque features that few people use.
+- "People always ask for these features, but in many cases they do not realize the consequences of using partial security features. Most users are not informed enough about security to be able to select the correct security options."
+	- The best solution is to have no options and make the system secure by default. If you absolutely have to, provide a single option: secure or insecure.
+- Many systems also have multiple cipher suites, where the user (or someone else) can choose which cipher and which authentication function to use. If at all possible, eliminate this complexity.
+	- After all, if choosing an encryption and authentication mode is so difficult that the designer can’t do it, it will be even more challenging for a user to make an informed decision.
+
+#### 8.4.2 Modularization
+> Even after you have eliminated a lot of options and features, the resulting system will still be quite complex. With modularization, you divide the system into separate modules, and design, analyze, and implement each module separately.
+
+- Look closely at the interface of your modules. Often there are features or options that exist to solve some other module’s problems. If possible, rip them out.
+	- Each module should solve its own problems.
+- Modularization is so important because it is the only efficient way we have of dealing with complexity.
+- If you have 20 modules, each with a single binary option that changes the module behavior, there are over a million possible configurations. You would have to analyze each of these configurations for security—an impossible task.
+- Many systems contain so-called optimizations that are useless, counterproductive, or insignificant because they do not optimize those parts of the system that form the bottleneck.
+- Make sure that work can be done in large enough chunks. Then only optimize those parts of your program that you can measure as having a significant effect on the performance.
+
+#### 8.4.3 Assertions
+> Assertions are a good tool to help improve the quality of your code. When implementing cryptographic code, adopt an attitude of professional paranoia.
+
+- Each module distrusts the other modules, and always checks parameter validity, enforces calling sequence restrictions, and refuses unsafe operations. 
+	- Most of the times these are straightforward assertions. If the module specifications state that you have to initialize the object before you use it, then using an object before initialization will result in an assertion error.
+	- Assertion failures should always lead to an abort of the program with ample documentation of which assertion failed, and for what reason.
+		- The general rule is: any time you can make a meaningful check on the internal consistency of the system, you should add an assertion.
+		- There are some programmers who implement assertion checking in development, but switch it off when they ship the product. This is not the security perspective.
+			- For production Rust, assertions are left out!
+- Generating wrong answers is probably the worst thing a program can do. It is much better to at least inform the user that a programming error has occurred, so he does not trust the erroneous results of the program. Our recommendation is to leave all your error checking on. (Rust = tests!)
+
+#### 8.4.4 Buffer Overflows
+> Buffer overflow problems have been known for decades. Perfectly good solutions to avoid them have been available for the same amount of time
+
+- Avoid any programming language that allows buffer overflows. Specifically: don’t use C or C++. And don’t ever switch off the array bounds checking of whichever language you use instead. It is such a simple rule, and will probably solve half of all your security bugs.
+
+#### 8.4.5 Testing
+
+> Extensive testing is always part of any good development process. Testing can help find bugs in programs, but it is useless to find security holes. Never confuse testing with security analysis. The two are complementary, but different.
+
+- There are two types of tests that should be implemented.
+	1. The first is a generic set of tests developed from the module’s functional specifications. 
+		- Ideally, one programmer implements the module and a second programmer implements the tests. Both work from the functional specification. 
+			- Any misunderstanding between the two is a clear indication that the specifications have to be clarified. The generic tests should attempt to cover the entire operational spectrum of the module
+			- In much of our own code, the test code is about as big as the operational code, and we have not found a way of significantly improving that.
+		- A second set of tests is developed by the programmer of the module itself. These are designed to test any implementation limits.
+	2. Also useful to have some ‘‘quick test’’ code that can run every time the program starts up.
+
+###  Side-Channel Attacks
+> There is a whole class of attacks that we call side-channel attacks [72]. These are possible when an attacker has an additional channel of information about the system. For example, an attacker could make detailed measurements of the time it takes to encrypt a message.
+
+- If the cryptography is embedded in a smart card, then the attacker can measure how much current the card draws over time. Magnetic fields, RF emissions, power consumption, timing, and interference on other data channels can all be used for side-channel attacks.
+	- Not surprisingly, side-channel attacks can be remarkably successful against systems that are not designed with these attacks in mind. Power analysis of smart cards is extremely successful [77].
+- Resistance against side-channel attacks will always come from a combination of countermeasures—some of them in the software that implements the cryptographic system, and some of them in the actual hardware.
+- Preventing side-channel attacks is an arms race. You try to protect yourself against the known side channels, and then a smart person somewhere discovers a new side channel, so then you have to go back and take that one into account as well. 
+	- In real life, the situation is not that bad, because most side-channel attacks are difficult to perform.
+- Side channels are a real danger to smart cards because the card is under full control of the adversary, but only a few types of side channels are practical against most other computers. 
+	- In practice, the most important side channels are timing and RF emissions. (Smart cards are particularly vulnerable to measuring the power consumption.)
+
+### 8.6 Beyond this Chapter
+> We hope this chapter has made it clear that security does not start or stop with the cryptographic design. All aspects of the system have to do their part to achieve security.
+
+- Implementing cryptographic systems is an art in itself. The most important aspect is the quality of the code. Low-quality code is the most common cause of real-world attacks, and it is rather easy to avoid. I
+- Be fanatical about the quality of your code. It can be done, and it needs to be done, so go do it!
+
+# Part 3: Key Negotiation
+
+## Ch 9. Generating Randomness
+> 

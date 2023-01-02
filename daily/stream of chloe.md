@@ -1,0 +1,1 @@
+Seems difficult to try and refine an idea/concept that doesn't take solid shape often. Something about feeling free. I suppose it starts by being brave enough to start and courageous enough to keep going. Today I will start, and tomorrow I hope to continue. 

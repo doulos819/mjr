@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9874be3295394e22",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "daily/stream of chloe.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "file": "daily/stream of chloe.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "file": "daily/stream of chloe.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md"
+                "file": "daily/stream of chloe.md"
               }
             }
           }
@@ -147,10 +160,10 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "e12d0fae4ea0b936",
+  "active": "9874be3295394e22",
   "lastOpenFiles": [
-    "research/Notes/books/Crytpo Eng Exercises.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
+    "research/Notes/books/Crytpo Eng Exercises.md",
     "research/EPF/Reading List.md",
     "research/EPF/Project-Uncloak.md",
     "research/EPF/Weekly-Updates/Week-3.md",

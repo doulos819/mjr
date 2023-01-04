@@ -35,6 +35,20 @@
 > We focus in this paper on “generic composition:” simply combine a standard symmetric encryption scheme with an MA scheme in some way. There are a few possible ways to do it, and our goal is to analyze and compare their security.
 
 - Generic composition. Assume we are given a symmetric encryption scheme $\mathcal{SE}$ whose encryption and decryption algorithms we denote by $\mathcal{E}$ and $\mathcal{D}$, respectively.
-- Also assume we are given a message authentication scheme \mathcal{MA} whose tagging and tag-verifying algorithms we denote by \mathcal{T} and \mathcal{V}, respectively.
+- Also assume we are given a message authentication scheme $\mathcal{MA}$ whose tagging and tag-verifying algorithms we denote by $\mathcal{T}$ and $\mathcal{V}$, respectively.
 - We assume the encryption scheme meets the weakest notion of privacy, namely IND-CPA.
 - We assume the MA scheme meets a notion of unforgeability under chosen message attack.
+- Encrypt-and-MAC $(E \& M)$: $\overline{E}(K_e||K_m, M) = E(K_e, M)||T(K_m,M)$.1 
+	- Namely, encrypt the plaintext and append a MAC of the plaintext. “Decrypt+verify” is performed by first decrypting to get the plaintext and then verifying the tag. The Transport Layer of SSH uses a variant of this method [48].
+-  MAC-then-encrypt $(MtE)$: $\overline{E}(K_e||K_m, M) = E(K_e, M||T (K_m, M))$. 
+	- Namely, append a MAC to the plaintext and then encrypt them together. “Decrypt+verify” is performed by first decrypting to get the plaintext and candidate tag, and then verifying the tag. SSL uses a variant of this method [23].
+- Encrypt-then-MAC $(EtM)$: $\overline{E}(K_e||K_m, M) = C||T (K_m, C)$ where $C = E(K_e, M)$. 
+	- Namely, encrypt the plaintext to get a ciphertext $C$ and append a MAC of $C$. “Decrypt+verify” is performed by first verifying the tag and then decrypting C. IPSEC uses a variant of this method [35].
+- Here $\overline{E}$ is the encryption algorithm of the authenticated encryption scheme while the “decrypt+verify” process specifies a decryption algorithm $\overline{D}$. 
+	- The latter will either return a plaintext or a special symbol indicating that it considers the ciphertext not authentic.
+- WUF-CMA is the standard notion [7]— it should be computationally infeasible for the adversary to find a message-tag pair in which the message is “new,” even after a chosen-message attack.
+- SUF-CMA requires that it be computationally infeasible for the adversary to find a new message-tag pair even after a chosen-message attack.
+	- (The message does not have to be new as long as the output tag was not previously attached to this message by the legitimate parties.)
+
+#### Why generic composition?
+> 

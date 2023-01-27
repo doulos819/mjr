@@ -13,19 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/books/Cryptography Engineering - 2010.md",
+                "file": "research/Notes/CESG/week-4.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "9874be3295394e22",
+            "id": "3e6f750f38ca801f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "daily/stream of chloe.md",
+                "file": "research/Notes/CESG/week-8.md",
                 "mode": "source",
                 "source": false
               }
@@ -78,11 +78,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e34f08ec77c9c135",
@@ -98,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "daily/stream of chloe.md",
+                "file": "research/Notes/CESG/week-8.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "daily/stream of chloe.md",
+                "file": "research/Notes/CESG/week-8.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "daily/stream of chloe.md"
+                "file": "research/Notes/CESG/week-8.md"
               }
             }
           }
@@ -160,17 +162,17 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "9874be3295394e22",
+  "active": "efeb54427296c225",
   "lastOpenFiles": [
+    "research/Notes/CESG/week-4.md",
+    "README.md",
+    "daily/stream of chloe.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/Notes/books/Crytpo Eng Exercises.md",
     "research/EPF/Reading List.md",
     "research/EPF/Project-Uncloak.md",
     "research/EPF/Weekly-Updates/Week-3.md",
     "research/EPF/Weekly-Updates/Week-1.md",
-    "research/EPF/Weekly-Updates/Week-0.md",
-    "research/EPF/Weekly-Updates/Week-2.md",
-    "research/Notes/books/articles/QAP-VB.md",
-    "Pasted image 20221108104618.png.md"
+    "research/EPF/Weekly-Updates/Week-0.md"
   ]
 }

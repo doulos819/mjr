@@ -41,5 +41,15 @@ not the strategy that you want her to use. Thus the security of an encryption sy
 > Number Theory is the study of ints {-2, -1, 0, 1, 2} denoted by the symbol $\mathbb{Z}$.
 - The set of integers with their addition and multiplication rules are an example of a ring.
 	- The property of staying inside of our original set after applying operations to a pair of elements is characteristic of a ring.
+- Proposition 1.4. Let a, b, c ∈ Z be integers.  
+	- (a) If a | b and b | c, then a | c.  
+	- (b) If a | b and b | a, then a = ±b.  
+	- (c) If a | b and a | c, then a | (b + c) and a | (b − c).
 - Definition. A common divisor of two integers a and b is a positive integer d that divides both of them.
 - The greatest common divisor of a and b is, as  its name suggests, the largest positive integer d such that d | a and d | b
+- t ≤ 2k, so the Euclidean algorithm terminates in at most 2k  
+iterations.
+	- Choose the smallest such k, so 2k ≥ b > 2k−1. Then: # of iterations $≤ 2k = 2(k - 1) + 2 < 2 log2(b) + 2$ 
+	- the Euclidean algorithm applied to a and b with a ≥ b requires no more than 2 log2(b) + 1 iterations to compute gcd(a, b).
+		- actual range is better
+- Definition. Let a and b be integers. We say that a and b are relatively prime if gcd(a, b) = 1.

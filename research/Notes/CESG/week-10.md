@@ -53,3 +53,18 @@ iterations.
 	- the Euclidean algorithm applied to a and b with a ≥ b requires no more than 2 log2(b) + 1 iterations to compute gcd(a, b).
 		- actual range is better
 - Definition. Let a and b be integers. We say that a and b are relatively prime if gcd(a, b) = 1.
+
+## 1.3 Modular Arithmetic
+- Definition. Let m ≥ 1 be an integer. We say that the integers a and b are congruent modulo m if their difference a − b is divisible by m. We write a ≡ b (mod m) to indicate that a and b are congruent modulo m. The number m is called the modulus.
+- Proposition 1.13. Let m ≥ 1 be an integer. 
+	- (a) If a1 ≡ a2 (mod m) and b1 ≡ b2 (mod m), then a1 ± b1 ≡ a2 ± b2 (mod m) and a1 · b1 ≡ a2 · b2 (mod m). 
+	- (b) Let a be an integer. Then a · b ≡ 1 (mod m) for some integer b if and only if gcd(a, m)=1
+- Suppose first that gcd(a, m) = 1. Then Theorem 1.11 tells us that we can find integers u and v satisfying au + mv = 1. This means that au − 1=−mv is divisible by m, so by definition, au ≡ 1 (mod m). In other words, we can take b = u.
+- Show $a^{-1}$ exists by using EEA
+- $\mathbb{Z}/m\mathbb{Z}$ the ring of integers modulo m.
+- More succinctly, if we let 
+	- p = Plaintext Letter, c = Ciphertext Letter, k = Secret Key
+	- then c ≡ p + k (mod 26) and p ≡ c − k (mod 26)
+
+### 1.3.2 The fast powering algorithm
+- 

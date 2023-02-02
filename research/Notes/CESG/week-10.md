@@ -108,4 +108,18 @@ iterations.
 		- Suppose that $a^n ≡ 1$ (mod p). Then the order of a modulo p divides n. In particular, the order of a divides p − 1.
 - Theorem 1.31 (Primitive Root Theorem). 
 	- Let p be a prime number. Then there exists an element $g ∈ F^∗_p$ whose powers give every element of $F^∗_p$, i.e., $F^∗_p = \{1,g,g^2,g^3,...,g^{p−2}\}$. Elements with this property are called primitive roots of $F_p$ or generators of $F^∗_p$. They are the elements of $F^∗_p$ having order p − 1.
-	- 
+
+Ex:
+1. https://github.com/doulos819/uncloak-cesg/tree/main/exercises/week_10
+2. bad at proofs...
+3. same...
+4. A generator of a group of integers in a field of primes is an element that can generate all other elements in the group when raised to different powers. To find a generator of the group of integers in the field of primes 1009 and 2357, you would need to follow these steps:
+
+1.  Find the prime factorization of the order of the group: The order of the group of integers in the field of primes is equal to the product of the primes. In this case, the order is 1009 * 2357.
+    
+2.  Check for generators for each prime factor: For each prime factor, you would need to check if there exists an element that generates the entire group when raised to different powers.
+    
+3.  If a generator is found for each prime factor, then the generator of the entire group is the product of the generators of the prime factors.
+    
+
+It is important to note that finding a generator is not a trivial task and can be time-consuming, especially for large prime numbers. There are algorithms and techniques that can help with finding a generator, but the exact method would depend on the specific use case and constraints.

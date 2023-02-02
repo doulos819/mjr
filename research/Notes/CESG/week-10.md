@@ -67,4 +67,45 @@ iterations.
 	- then c ≡ p + k (mod 26) and p ≡ c − k (mod 26)
 
 ### 1.3.2 The fast powering algorithm
-- 
+- Alice and Bob are required to compute large powers of a number g modulo another number N , where N may have hundreds of digits. The naive way to compute gA is by repeated multiplication by g.
+- if A is large, this algorithm is completely impractical. For example, if A ≈ 21000, then the naive algorithm would take longer than the estimated age of the universe!
+- The idea is to use the binary expansion of the exponent A to convert the calculation of $g^A$ into a succession of squarings and multiplications.
+- Example 1.19. 
+	- Suppose that we want to compute 3218 (mod 1000). The first step is to write 218 as a sum of powers of 2, $218 = 2 + 2^3 +2^4 +2^6 +2^7$.
+	- Then $3^{218}$ becomes $3^{218} =3^2+{}^{2^3}+{}^{2^4}+{}^{2^6}+{}^{2^7} =3^2 · 3^{2^3} · 3^{2^4} · 3^{2^6} · 3^{2^7}$ . (each number in the sequence is the square of the preceding one)
+	- we may reduce modulo 1000 after each multiplication.
+
+## 1.4 Prime numbers, unique factorization, and finite fields
+- Definition. An integer p is called a prime if p ≥ 2 and if the only positive integers dividing p are 1 and p.
+- Proposition 1.20. Let p be a prime number, and suppose that p divides the product ab of two integers a and b.Then p divides at least one of a and b.
+- Theorem 1.21 (The Fundamental Theorem of Arithmetic). Let a ≥ 2 be an integer. Then a can be factored as a product of prime numbers
+	- $a = p_1^{e_1} · p^{e_2}_2 · p^{e_3}_3 ···p^{e_r}_r.$ 
+	- Further, other than rearranging the order of the primes, this factorization into prime powers is unique.
+	- (For an example of a situation in which unique factorization fails to be true, see the E-zone described in [126, Chatper 7].)
+	- each prime p appears to a particular power. We denote this power by $ord_p(a)$ and call it the order (or exponent) of p in a.  appears to a particular power. We denote this power by ord(For convenience, we set $ord_p(1) = 0$ for all primes.)
+		- For example, the factorization of 1728 is 1728 = 26 · 33,so ord2(1728) = 6, ord3(1728) = 3, and ordp(1728) = 0 for all primes p ≥ 5. ***
+	- We now observe that if p is a prime, then every nonzero number modulo p has a multiplicative inverse modulo p.
+	- Proposition 1.22. Let p be a prime. Then every nonzero element a in $\mathbb{Z}/p\mathbb{Z}$ has a multiplicative inverse, that is, there is a number b satisfying
+		- ab ≡ 1 (mod p).
+		- We denote this value of b by $a^{−1}$ mod p , or if p has already been specified, then simply by $a^{−1}$.
+		- Proof. This proposition is a special case of Proposition 1.13(b) using the prime modulus p, since if a ∈ Z/pZ is not zero, then gcd(a, p)=1.
+		- Remark 1.23. The extended Euclidean algorithm (Theorem 1.11) gives us an efficient computational method for computing a−1 mod p. We simply solve the equation au + pv = 1 in integers u and v, and then u = a−1 mod p.
+		- Definition. If p is prime, then the set $\mathbb{Z}/p\mathbb{Z}$ of integers modulo p with its addition, subtraction, multiplication, and division rules is an example of a field.
+	- For $a, b ∈ \mathbb{F}p$, the equality of a and b is denoted by a = b, while for $a, b ∈ \mathbb{Z}/p\mathbb{Z}$, the equality of a and b is denoted by equivalence modulo p, i.e., a ≡ b (mod p).
+
+## 1.5 Powers and primitive roots in finite fields
+- Theorem 1.25 (Fermat’s Little Theorem). Let p be a prime number and let a be any integer. Then
+	- $a^{p−1} ≡  1 (mod p)$ if $p \nshortmid a$,
+	- $0 (mod p)$ if $p | a$.
+- Example 1.26. 
+	- The number p = 15485863 is prime, so Fermat’s little theorem (Theorem 1.25) tells us that $2^{15485862} ≡ 1$ (mod 15485863).
+	- Thus without doing any computing, we know that the number $2^{15485862} − 1$, a number having more than two million digits, is a multiple of 15485863.
+- Remark 1.27. Fermat’s little theorem (Theorem 1.25) and the fast powering algorithm (Section 1.3.2) provide us with a reasonably efficient method of computing inverses modulo p, namely
+	- $a^{−1} ≡ a^{p−2}$ (mod p).
+	- true because if we multiply $a^{p−2}$ by a, then Fermat’s theorem tells us that the product is equal to 1 modulo p.
+- Proposition 1.30. 
+	- Let p be a prime and let a be an integer not divisible by p. 
+		- Suppose that $a^n ≡ 1$ (mod p). Then the order of a modulo p divides n. In particular, the order of a divides p − 1.
+- Theorem 1.31 (Primitive Root Theorem). 
+	- Let p be a prime number. Then there exists an element $g ∈ F^∗_p$ whose powers give every element of $F^∗_p$, i.e., $F^∗_p = \{1,g,g^2,g^3,...,g^{p−2}\}$. Elements with this property are called primitive roots of $F_p$ or generators of $F^∗_p$. They are the elements of $F^∗_p$ having order p − 1.
+	- 

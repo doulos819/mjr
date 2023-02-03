@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/Notes/CESG/week-10.md",
+                "file": "research/Notes/CESG/session_10.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "054705e79656f157",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "research/Notes/CESG/session_11.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/Notes/CESG/week-10.md",
+                "file": "research/Notes/CESG/session_11.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/Notes/CESG/week-10.md",
+                "file": "research/Notes/CESG/session_11.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/Notes/CESG/week-10.md"
+                "file": "research/Notes/CESG/session_11.md"
               }
             }
           }
@@ -148,17 +161,17 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "a5e825331a370716",
+  "active": "054705e79656f157",
   "lastOpenFiles": [
-    "research/Notes/CESG/week-10.md",
-    "research/Notes/CESG/week-4.md",
-    "research/Notes/CESG/week-8.md",
+    "research/Notes/CESG/session_10.md",
+    "research/Notes/CESG/session_11.md",
+    "research/Notes/CESG/session_8.md",
+    "research/Notes/books/articles/EF1P-Number-Theory.md",
+    "research/Notes/CESG/session_4.md",
     "README.md",
     "daily/stream of chloe.md",
     "research/Notes/books/Cryptography Engineering - 2010.md",
     "research/Notes/books/Crytpo Eng Exercises.md",
-    "research/EPF/Reading List.md",
-    "research/EPF/Project-Uncloak.md",
-    "research/EPF/Weekly-Updates/Week-3.md"
+    "research/EPF/Reading List.md"
   ]
 }

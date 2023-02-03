@@ -17,7 +17,7 @@ Link to exercises: https://github.com/doulos819/mjr/blob/main/research/Notes/boo
 - [Ch 4. Block Cipher Modes](Cryptography%20Engineering%20-%202010.md#Ch%204.%20Block%20Cipher%20Modes)
 - [Ch 5. Hash Functions](#Ch%205.%20Hash%20Functions)
 - [Ch. 6 Message Authentication Codes](#Ch.%206%20Message%20Authentication%20Codes)
-- [Ch. 7 TLS/SSL - Secure Channels](week-4.md)
+- [Ch. 7 TLS/SSL - Secure Channels](session_4.md)
 - [Ch. 8 Implementation Issues](#Ch.%208%20Implementation%20Issues)
 [Part 3: Key Negotiation](#Part%203:%20Key%20Negotiation)
 - [Ch 9. Generating Randomness](#Ch%209.%20Generating%20Randomness)
@@ -695,7 +695,7 @@ What does it mean to distinguish a block cipher from an ideal block cipher.
   >To recap: whenever you do authentication, always think carefully about what other information should be included in the authentication. Be sure that you code all of this information, including the message, into a string of bytes in a way that can be parsed back into the fields in a unique manner. Do not forget to apply this to the concatenation of the additional data and the message we discussed at the start of this section. If you authenticate d || m, you had better have a fixed rule on how to split the concatenation back into d and m.
   
   ## Ch. 7
-- [week-4](week-4.md)
+- [session_4](session_4.md)
 
 ## Ch. 8 Implementation Issues
 > Easy to screw up the security at the implementation level. In fact, implementation errors such as buffer overflows are one of the biggest security problems in real-world systems.

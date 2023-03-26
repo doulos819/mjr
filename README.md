@@ -5,3 +5,5 @@
 Managed by [Chloe](https://www.marmaj.org/chloe), supported by the [Marma J DAO](https://marmaj.org/dao/), and working to positively impact the marmaj Community.
 
 Currently working to build out Marmaj Labs
+
+Run code from this repo at your own risk <3
